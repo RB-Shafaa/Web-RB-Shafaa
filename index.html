@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ========== SEO META ========== -->
+    <title>Rumah Belajar Shafaa — Sholeh, Cerdas & Intelek</title>
+    <meta name="description"
+        content="Website resmi Rumah Belajar Shafaa. Mewujudkan generasi Sholeh, Cerdas, dan Intelek melalui pendidikan modern, karakter Islami, dan prestasi." />
+    <meta name="keywords"
+        content="Rumah Belajar Shafaa, sekolah Islam, PPDB Online, pendidikan modern, sekolah unggulan, akademik, ekstrakurikuler" />
+    <meta name="author" content="Rumah Belajar Shafaa" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://rumahbelajarshafaa.sch.id/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Rumah Belajar Shafaa — Sholeh, Cerdas & Intelek" />
+    <meta property="og:description" content="Selamat datang di Rumah Belajar Shafaa, Sholeh, Cerdas & Intelek." />
+    <meta property="og:image" content="https://drive.google.com/uc?export=view&id=1B03QiOLPt6IS2A9abikEufggNzJVDxwr" />
+    <meta property="og:url" content="https://rumahbelajarshafaa.sch.id/" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Rumah Belajar Shafaa" />
+    <meta name="twitter:description" content="Sholeh, Cerdas & Intelek." />
+    <meta name="twitter:image" content="https://drive.google.com/uc?export=view&id=1B03QiOLPt6IS2A9abikEufggNzJVDxwr" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png"
+        href="https://drive.google.com/uc?export=view&id=1B03QiOLPt6IS2A9abikEufggNzJVDxwr" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "Rumah Belajar Shafaa",
+    "slogan": "Sholeh, Cerdas & Intelek",
+    "url": "https://rumahbelajarshafaa.sch.id/",
+    "logo": "https://drive.google.com/uc?export=view&id=1B03QiOLPt6IS2A9abikEufggNzJVDxwr",
+    "sameAs": [
+      "https://instagram.com/rumahbelajarshafaa",
+      "https://facebook.com/rumahbelajarshafaa",
+      "https://youtube.com/@rumahbelajarshafaa"
+    ]
+  }
+  </script>
+
+    <!-- Google Fonts: Fraunces (display) + Manrope (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Manrope:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+
+    <!-- ============ LOADING SCREEN ============ -->
+    <div class="loader" id="loader" aria-hidden="true">
+        <div class="loader__ring"></div>
+        <!--p class="loader__text">Rumah Belajar Shafaa</p-->
+    </div>
+
+    <!-- ============ SCROLL PROGRESS BAR ============ -->
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+    <!-- ============ NAVBAR ============ -->
+    <header class="navbar" id="navbar" role="banner">
+        <div class="container navbar__inner">
+            <a href="#home" class="brand" aria-label="Rumah Belajar Shafaa - Beranda">
+                <img src="https://avatars.githubusercontent.com/u/320439436?v=4" alt="Logo Rumah Belajar Shafaa"
+                    class="brand__logo" loading="eager" onerror="this.style.display='none'" />
+                <span class="brand__text">
+                    <span class="brand__name">Rumah Belajar</span>
+                    <span class="brand__sub">Shafaa</span>
+                </span>
+            </a>
+
+            <nav class="nav" id="nav" aria-label="Navigasi utama">
+                <ul class="nav__list">
+                    <li><a href="#home" class="nav__link is-active">Home</a></li>
+                    <li><a href="#profil" class="nav__link">Profil</a></li>
+                    <li><a href="#akademik" class="nav__link">Akademik</a></li>
+                    <li><a href="#ppdb" class="nav__link">PPDB Online</a></li>
+                    <li><a href="#galeri" class="nav__link">Galeri</a></li>
+                    <li><a href="#blog" class="nav__link">Blog</a></li>
+                    <li><a href="#kontak" class="nav__link">Kontak</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav__actions">
+                <button class="icon-btn" id="searchBtn" aria-label="Buka pencarian" title="Cari">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="7" />
+                        <path d="m20 20-3.5-3.5" />
+                    </svg>
+                </button>
+                <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Ganti tema" title="Ganti tema">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4" />
+                        <path
+                            d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                    </svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                </button>
+                <button class="hamburger" id="hamburger" aria-label="Buka menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Search overlay -->
+        <div class="search-overlay" id="searchOverlay" role="dialog" aria-modal="true" aria-hidden="true">
+            <div class="search-overlay__inner">
+                <label for="searchInput" class="visually-hidden">Cari</label>
+                <input id="searchInput" type="search" placeholder="Cari materi, halaman, artikel..."
+                    autocomplete="off" />
+                <button class="icon-btn" id="closeSearch" aria-label="Tutup pencarian">✕</button>
+            </div>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ============ HERO ============ -->
+        <section class="hero" id="home" aria-label="Sambutan utama">
+            <div class="hero__bg" aria-hidden="true">
+                <span class="orb orb--1"></span>
+                <span class="orb orb--2"></span>
+                <span class="orb orb--3"></span>
+                <div class="hero__grain"></div>
+            </div>
+
+            <div class="container hero__grid">
+                <div class="hero__content" data-reveal>
+                    <span class="pill">
+                        <span class="pill__dot"></span>
+                        PPDB 2027 / 2028 Dibuka
+                    </span>
+                    <h1 class="hero__title">
+                        Selamat Datang di<br />
+                        <span class="grad-text">Rumah Belajar Shafaa</span>
+                    </h1>
+                    <p class="hero__lead">
+                        <span id="typing" aria-live="polite"></span><span class="caret">.</span>
+                    </p>
+                    <p class="hero__desc">
+                        Mewujudkan generasi <b>Sholeh</b>, <b>Cerdas</b>, dan <b>Intelek</b>
+                        melalui pendidikan modern berlandaskan akhlak Islami.
+                    </p>
+                    <div class="hero__cta">
+                        <a href="#profil" class="btn btn--primary ripple">Profil Sekolah</a>
+                        <a href="#ppdb" class="btn btn--ghost ripple">PPDB Online →</a>
+                    </div>
+
+                    <div class="stats" aria-label="Statistik sekolah">
+                        <div class="stat"><span class="stat__num" data-counter="100">0</span><span
+                                class="stat__lbl">Siswa</span></div>
+                        <div class="stat"><span class="stat__num" data-counter="10">0</span><span
+                                class="stat__lbl">Guru</span></div>
+                        <div class="stat"><span class="stat__num" data-counter="100">0</span><span
+                                class="stat__lbl">Lulusan</span></div>
+                        <div class="stat"><span class="stat__num" data-counter="3">0</span><span
+                                class="stat__lbl">Tahun</span></div>
+                    </div>
+                </div>
+
+                <div class="hero__visual" data-reveal>
+                    <div class="glass-card hero__card">
+                        <img loading="lazy" alt="Suasana belajar di Rumah Belajar Shafaa"
+                            src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1000&q=70" />
+                        <!--div class="hero__badge">
+              <div class="hero__badge-num">A+</div>
+              <div>
+                <div class="hero__badge-label">Akreditasi</div>
+                <div class="hero__badge-sub">Terakreditasi BAN-S/M</div>
+              </div>
+          </div-->
+                    </div>
+                    <div class="floating-tag tag--1">🎓 100% Lulus</div>
+                    <div class="floating-tag tag--2">✨ Beasiswa Prestasi</div>
+                </div>
+            </div>
+
+            <!--a href="#sambutan" class="hero__scroll" aria-label="Gulir ke bawah">
+        <span></span>
+    </a-->
+        </section>
+
+        <!-- ============ SAMBUTAN ============ -->
+        <section class="section" id="sambutan" aria-labelledby="h-sambutan">
+            <div class="container two-col">
+                <div class="two-col__media" data-reveal>
+                    <div class="portrait">
+                        <img loading="lazy" alt="Foto Kepala Sekolah"
+                            src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=1400&q=70" />
+                    </div>
+                    <div class="portrait-badge">
+                        <b>Ustadzah Sri Rahayu A, S.Pd</b><span>Kepala Sekolah</span>
+                    </div>
+                </div>
+                <div class="two-col__body" data-reveal>
+                    <span class="eyebrow">Sambutan</span>
+                    <h2 id="h-sambutan">Salam hangat dari<br /><span class="grad-text">Kepala Sekolah</span></h2>
+                    <p>
+                        Assalamu'alaikum warahmatullahi wabarakatuh. Selamat datang di
+                        <b>Rumah Belajar Shafaa</b> — rumah kedua bagi ananda untuk tumbuh
+                        menjadi pribadi yang <i>Sholeh, Cerdas & Intelek</i>.
+                    </p>
+                    <p>
+                        Kami menghadirkan lingkungan belajar yang hangat, kurikulum modern,
+                        serta pendampingan karakter Islami sehingga setiap anak dapat
+                        mengembangkan potensi terbaiknya baik dari segi akademik, akhlak, maupun bakat.
+                    </p>
+                    <p>
+                        Terima kasih atas kepercayaan Bapak/Ibu. Mari bersama menyiapkan
+                        generasi terbaik bagi umat dan bangsa.
+                    </p>
+                    <blockquote class="quote">
+                        "Didiklah anakmu sesuai zamannya, karena mereka hidup bukan di zamanmu."
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ BANNER SLIDER ============ -->
+        <section class="section slider-section" aria-label="Banner kegiatan">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Kegiatan Terbaru</span>
+                    <h2>Momen di <span class="grad-text">Shafaa</span></h2>
+                </div>
+
+                <div class="slider" id="slider" data-reveal>
+                    <div class="slider__track" id="sliderTrack">
+                        <div class="slide"><img loading="lazy" alt="Upacara"
+                                src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=1400&q=70">
+                            <div class="slide__cap">
+                                <h3>Upacara Bendera</h3>
+                                <p>Menumbuhkan cinta tanah air setiap Senin pagi.</p>
+                            </div>
+                        </div>
+                        <div class="slide"><img loading="lazy" alt="Kegiatan lab"
+                                src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=1400&q=70">
+                            <div class="slide__cap">
+                                <h3>Praktikum Sains</h3>
+                                <p>Belajar melalui pengalaman langsung di laboratorium.</p>
+                            </div>
+                        </div>
+                        <div class="slide"><img loading="lazy" alt="Perpustakaan"
+                                src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1400&q=70">
+                            <div class="slide__cap">
+                                <h3>Literasi</h3>
+                                <p>Program membaca 15 menit sebelum belajar.</p>
+                            </div>
+                        </div>
+                        <div class="slide"><img loading="lazy" alt="Olahraga"
+                                src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=1400&q=70">
+                            <div class="slide__cap">
+                                <h3>Ekstrakurikuler</h3>
+                                <p>Beragam pilihan bakat & minat.</p>
+                            </div>
+                        </div>
+                        <div class="slide"><img loading="lazy" alt="Wisuda"
+                                src="https://placehold.co/800x600/e2e8f0/475569?text=Gambar+Tidak+Tersedia">
+                            <div class="slide__cap">
+                                <h3>Wisuda Tahfidz</h3>
+                                <p>Merayakan capaian hafalan Al-Qur'an.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="slider__nav slider__prev" id="prevSlide" aria-label="Sebelumnya">‹</button>
+                    <button class="slider__nav slider__next" id="nextSlide" aria-label="Selanjutnya">›</button>
+                    <div class="slider__dots" id="sliderDots"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PENGUMUMAN ============ -->
+        <section class="section" aria-label="Pengumuman terbaru">
+            <div class="container">
+                <div class="section-head between">
+                    <div>
+                        <span class="eyebrow">Info Terbaru</span>
+                        <h2>Pengumuman <span class="grad-text">Sekolah</span></h2>
+                    </div>
+                    <a href="#blog" class="link-arrow">Lihat semua →</a>
+                </div>
+                <div class="cards-grid">
+                    <article class="ann-card glass-card" data-reveal>
+                        <span class="ann-card__date"><b>12</b>Feb</span>
+                        <span class="badge badge--pink">Pengumuman</span>
+                        <h3>Libur Semester Ganjil</h3>
+                        <p>Libur akhir semester berlangsung tanggal 20–30 Februari 2027.</p>
+                        <button class="link-arrow" data-modal="Liburan">Selengkapnya →</button>
+                    </article>
+
+                    <article class="ann-card glass-card" data-reveal>
+                        <span class="ann-card__date"><b>18</b>Feb</span>
+                        <span class="badge badge--purple">Akademik</span>
+                        <h3>Jadwal Ujian Tengah Semester</h3>
+                        <p>UTS dilaksanakan mulai 18 Februari sesuai jadwal per kelas.</p>
+                        <button class="link-arrow" data-modal="Jadwal UTS">Selengkapnya →</button>
+                    </article>
+                    <article class="ann-card glass-card" data-reveal>
+                        <span class="ann-card__date"><b>01</b>Mar</span>
+                        <span class="badge badge--pink">PPDB</span>
+                        <h3>PPDB 2027/2028 Dibuka</h3>
+                        <p>Pendaftaran gelombang 1 dibuka 1 Maret — 30 April 2027.</p>
+                        <button class="link-arrow" data-modal="PPDB Dibuka">Selengkapnya →</button>
+                    </article>
+                    <article class="ann-card glass-card" data-reveal>
+                        <span class="ann-card__date"><b>25</b>Feb</span>
+                        <span class="badge badge--purple">Lomba</span>
+                        <h3>Lomba Cerdas Cermat</h3>
+                        <p>Ikuti seleksi tim CCA tingkat kabupaten, daftar di TU.</p>
+                        <button class="link-arrow" data-modal="Lomba Cerdas Cermat">Selengkapnya →</button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PROFIL ============ -->
+        <section class="section section--tint" id="profil" aria-labelledby="h-profil">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Tentang Kami</span>
+                    <h2 id="h-profil">Profil <span class="grad-text">Rumah Belajar Shafaa</span></h2>
+                    <p class="section-lead">Menumbuhkan generasi Sholeh, Cerdas & Intelek dengan kurikulum modern &
+                        karakter Islami.</p>
+                </div>
+
+                <div class="two-col">
+                    <div class="two-col__body" data-reveal>
+                        <h3>Sejarah Sekolah</h3>
+                        <p>Rumah Belajar Shafaa berdiri sejak tahun 2022 sebagai lembaga pendidikan yang memadukan
+                            keunggulan akademik dengan penanaman akhlak Islami. Diawali dari kelas kecil di rumah
+                            pendiri, kini Shafaa berkembang menjadi sekolah unggulan dengan puluhan alumni yang tersebar
+                            di berbagai daerah.</p>
+                    </div>
+                    <div class="two-col__media" data-reveal>
+                        <img loading="lazy" class="round-img" alt="Gedung sekolah"
+                            src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=1000&q=70" />
+                    </div>
+                </div>
+
+                <div class="vm-grid">
+                    <div class="glass-card vm-card" data-reveal>
+                        <div class="vm-icon">🌟</div>
+                        <h3>Visi</h3>
+                        <ul class="ticks">
+                            <li>Menjadi sekolah unggulan yang melahirkan generasi Sholeh, Cerdas & Intelek.</li>
+                            <li>Menjadi rujukan pendidikan berkarakter di tingkat nasional.</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card vm-card" data-reveal>
+                        <div class="vm-icon">🎯</div>
+                        <h3>Misi</h3>
+                        <ul class="ticks">
+                            <li>Menyelenggarakan pembelajaran modern berbasis proyek.</li>
+                            <li>Membina akhlak & hafalan Al-Qur'an sejak dini.</li>
+                            <li>Mengembangkan bakat & minat melalui ekstrakurikuler.</li>
+                            <li>Membangun kemitraan aktif dengan orang tua & komunitas.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Struktur Organisasi -->
+                <div class="section-head">
+                    <span class="eyebrow">Struktur Organisasi</span>
+                    <h3>Tim <span class="grad-text">Pimpinan</span></h3>
+                </div>
+                <div class="org-tree" data-reveal>
+                    <div class="org-node org-node--top"><b>Rumah Belajar</b><span>Shafaa</span></div>
+                    <div class="org-line"></div>
+                    <div class="org-node org-node--mid"><b>Ustadzah Sri Rahayu, S.Pd.</b><span>Kepala Sekolah</span>
+                    </div>
+                    <div class="org-line"></div>
+                    <div class="org-row">
+                        <div class="org-node"><b>Ust. Mulyani</b><span>Waka Kurikulum</span></div>
+                        <div class="org-node"><b>Ust. Putri</b><span>Waka Kesiswaan</span></div>
+                        <div class="org-node"><b>Ust. Dasinih</b><span>Waka Humas</span></div>
+                        <div class="org-node"><b>Ust. Mariyah</b><span>Waka Sarpras</span></div>
+                    </div>
+                </div>
+
+                <!-- Guru -->
+                <div class="section-head between" style="margin-top:60px">
+                    <div>
+                        <span class="eyebrow">Tenaga Pendidik</span>
+                        <h3>Daftar <span class="grad-text">Guru</span></h3>
+                    </div>
+                    <div class="chip-row" id="teacherFilter" role="tablist" aria-label="Filter mata pelajaran">
+                        <button class="chip is-active" data-subject="all">Semua</button>
+                        <button class="chip" data-subject="Sains">Sains</button>
+                        <button class="chip" data-subject="Bahasa">Bahasa</button>
+                        <button class="chip" data-subject="Agama">Agama</button>
+                        <button class="chip" data-subject="Sosial">Sosial</button>
+                    </div>
+                </div>
+
+                <div class="teachers-grid" id="teachersGrid"></div>
+
+                <!-- Fasilitas -->
+                <div class="section-head" style="margin-top:60px">
+                    <span class="eyebrow">Fasilitas</span>
+                    <h3>Sarana <span class="grad-text">Belajar</span></h3>
+                </div>
+                <div class="facilities">
+                    <div class="fac glass-card" data-reveal><span><i
+                                class="fa-solid fa-microscope"></i></span><b>Laboratorium</b>
+                        <p>IPA, Kimia, Biologi lengkap.</p>
+                    </div>
+                    <div class="fac glass-card" data-reveal><span><i
+                                class="fa-solid fa-book-bookmark"></i></span><b>Perpustakaan</b>
+                        <p>1.000+ koleksi buku.</p>
+                    </div>
+                    <div class="fac glass-card" data-reveal><span><i
+                                class="fa-solid fa-mosque"></i></span><b>Mushola</b>
+                        <p>Sholat wajib berjamaah.</p>
+                    </div>
+                    <div class="fac glass-card" data-reveal><span><i class="fa-solid fa-building"></i></span><b>Ruang
+                            Belajar</b>
+                        <p>Kapasitas 50+ orang.</p>
+                    </div>
+                    <div class="fac glass-card" data-reveal><span><i
+                                class="fa-solid fa-futbol"></i></span><b>Lapangan</b>
+                        <p>Multiguna outdoor.</p>
+                    </div>
+                    <div class="fac glass-card" data-reveal><span><i class="fa-solid fa-heartbeat"></i></span><b>UKS</b>
+                        <p>Layanan kesehatan siswa.</p>
+                    </div>
+                    <div class="fac glass-card" data-reveal><span><i class="fa-solid fa-utensils"></i></span><b>Makanan
+                            Bergizi</b>
+                        <p>Menu sehat & higienis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ AKADEMIK ============ -->
+        <section class="section" id="akademik" aria-labelledby="h-akademik">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Akademik</span>
+                    <h2 id="h-akademik">Informasi <span class="grad-text">Akademik</span></h2>
+                </div>
+
+                <div class="tabs" role="tablist">
+                    <button class="tab is-active" data-tab="kurikulum" role="tab">Kurikulum</button>
+                    <button class="tab" data-tab="kalender" role="tab">Kalender</button>
+                    <button class="tab" data-tab="jadwal" role="tab">Jadwal</button>
+                    <button class="tab" data-tab="prestasi" role="tab">Prestasi</button>
+                </div>
+
+                <div class="tab-panel is-active" data-panel="kurikulum">
+                    <div class="glass-card pad">
+                        <h3>Kurikulum Merdeka + Shafaa Character</h3>
+                        <p>Kami memadukan Kurikulum Merdeka dengan program khas Shafaa: <b>Tahfidz</b>, <b>Adab &
+                                Akhlak</b>, <b>Bahasa Arab & Inggris</b>, serta <b>Project-based Learning</b>. Fokus
+                            pada
+                            pemahaman mendalam, kemandirian, dan kreativitas siswa.</p>
+                        <div class="mini-grid">
+                            <div><b>Akademik Inti</b>
+                                <p>Tahfidz, Bahasa Arab & Inggris, Calistung</p>
+                            </div>
+                            <div><b>Karakter</b>
+                                <p>Adab Islami, Ibadah, Kepemimpinan.</p>
+                            </div>
+
+                            <div><b>Life Skill</b>
+                                <p>Public Speaking, Berhitung, Membaca.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" data-panel="kalender">
+                    <!--div class="glass-card pad">
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Kegiatan</th>
+                                        <th>Keterangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>15 Jan 2027</td>
+                                        <td>Awal Semester Genap</td>
+                                        <td>Seluruh jenjang</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10 Feb 2027</td>
+                                        <td>Isra Mikraj</td>
+                                        <td>Libur nasional</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18–23 Feb 2027</td>
+                                        <td>UTS Genap</td>
+                                        <td>Sesuai jadwal kelas</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10 Mar 2027</td>
+                                        <td>Awal Ramadhan</td>
+                                        <td>Pesantren Ramadhan</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15 Apr 2027</td>
+                                        <td>Idul Fitri</td>
+                                        <td>Libur & Halal Bihalal</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2 Mei 2027</td>
+                                        <td>Hardiknas</td>
+                                        <td>Upacara</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15 Jun 2027</td>
+                                        <td>Wisuda & Kenaikan Kelas</td>
+                                        <td>Aula Utama</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div-->
+                    <p class="glass-card pad">Masih kosong nih, nantikan update selanjutnya ya!</p>
+                </div>
+
+                <div class="tab-panel" data-panel="jadwal">
+                    <div class="glass-card pad">
+                        <div class="table-wrap">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Jam</th>
+                                        <th>Senin</th>
+                                        <th>Selasa</th>
+                                        <th>Rabu</th>
+                                        <th>Kamis</th>
+                                        <th>Jumat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>08.00–08.15</td>
+                                        <td colspan="5">Sholat Dhuha</td>
+                                    </tr>
+                                    <tr>
+                                        <td>08.15–09.15</td>
+                                        <td colspan="5">Al-qur'an (Tilawah & Hafalan)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>09.15–09.35</td>
+                                        <td colspan="5">Istirahat</td>
+                                    </tr>
+                                    <tr>
+                                        <td>09.35–10.00</td>
+                                        <td>Fiqih</td>
+                                        <td>Akhlak</td>
+                                        <td>Olahraga</td>
+                                        <td>Matematika</td>
+                                        <td>Aqidah</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10.00–10.25</td>
+                                        <td>IPAS</td>
+                                        <td>PKN</td>
+                                        <td>Adab</td>
+                                        <td>Bahasa Arab/Inggris</td>
+                                        <td>Bahasa Indonesia</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10.25–10.30</td>
+                                        <td colspan="5">Penutupan</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-panel" data-panel="prestasi">
+                    <!--div class="timeline">
+                        <div class="tl-item" data-reveal><b>2025</b>
+                            <h4>Juara 1 Olimpiade Sains Nasional</h4>
+                            <p>Bidang Fisika tingkat SMA.</p>
+                        </div>
+                        <div class="tl-item" data-reveal><b>2024</b>
+                            <h4>Juara Umum MTQ Pelajar Provinsi</h4>
+                            <p>7 medali dari 10 cabang.</p>
+                        </div>
+                        <div class="tl-item" data-reveal><b>2023</b>
+                            <h4>Best Innovation — Coding Fair</h4>
+                            <p>Aplikasi AI untuk pertanian lokal.</p>
+                        </div>
+                        <div class="tl-item" data-reveal><b>2022</b>
+                            <h4>Juara 2 Debat Bahasa Inggris</h4>
+                            <p>Tingkat Nasional.</p>
+                        </div>
+                    </div-->
+                    <p class="glass-card pad">Masih kosong nih, nantikan update selanjutnya ya!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PPDB ============ -->
+        <section class="section section--tint" id="ppdb" aria-labelledby="h-ppdb">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Pendaftaran</span>
+                    <h2 id="h-ppdb">PPDB <span class="grad-text">Online</span></h2>
+                    <p class="section-lead">Ikuti 4 langkah mudah untuk bergabung bersama Rumah Belajar Shafaa.</p>
+                </div>
+
+                <ol class="stepper" aria-label="Alur pendaftaran">
+                    <!-- Untuk <li class="step is-active"> isi begini kalo udah aktif kalo belom isi <li class="step">-->
+                    <li class="step"><span class="step__no">1</span><b>Isi Form</b><small>Data diri
+                            lengkap</small></li>
+                    <li class="step"><span class="step__no">2</span><b>Upload Berkas</b><small>Foto & dokumen</small>
+                    </li>
+                    <li class="step"><span class="step__no">3</span><b>Verifikasi</b><small>Cek panitia PPDB</small>
+                    </li>
+                    <li class="step"><span class="step__no">4</span><b>Pengumuman</b><small>Hasil seleksi</small></li>
+                </ol>
+
+                <div class="ppdb-grid">
+                    <form class="glass-card pad ppdb-form" id="ppdbForm" novalidate>
+                        <div class="form-row">
+                            <label>Nama Lengkap*<input required name="nama" type="text"
+                                    placeholder="Nama lengkap sesuai akta" /></label>
+                            <label>NISN<input id="nisn" name="nisn" type="text" pattern="[0-9]{10}"
+                                    placeholder="Masukkan NISN (Jika ada)" /></label>
+                        </div>
+                        <div class="form-row">
+                            <label>Tempat Lahir*<input required name="tempat" type="text" /></label>
+                            <label>Tanggal Lahir*<input required name="tanggal" type="date" /></label>
+                        </div>
+                        <div class="form-row">
+                            <label>Jenis Kelamin*
+                                <select required name="gender">
+                                    <option value="">Pilih...</option>
+                                    <option>Laki-laki</option>
+                                    <option>Perempuan</option>
+                                </select>
+                            </label>
+                            <label>Pilihan Jurusan*
+                                <select required name="jurusan">
+                                    <option value="">Pilih...</option>
+                                    <option>IPA</option>
+                                    <option>IPS</option>
+                                    <option>Bahasa</option>
+                                    <option>Tahfidz</option>
+                                </select>
+                            </label>
+                        </div>
+                        <label>Alamat*<textarea required name="alamat" rows="2"></textarea></label>
+                        <div class="form-row">
+                            <label>Asal Sekolah<input id="asal" required name="asal" type="text"
+                                    placeholder="Masukkan Asal Sekolah (Jika ada)" /></label>
+                            <label>Nama Orang Tua*<input required name="ortu" type="text" /></label>
+                        </div>
+                        <div class="form-row">
+                            <label>Nomor HP*<input required name="hp" type="tel" pattern="[0-9+ ]{8,15}" /></label>
+                            <label>Email<input id="email" required name="email" type="email" /></label>
+                        </div>
+                        <div class="form-row">
+                            <label>Upload Foto*<input required name="foto" type="file" accept="image/*" /></label>
+                            <label>Upload Berkas*<input required name="berkas" type="file" accept=".pdf,.zip" /></label>
+                        </div>
+                        <label class="check">
+                            <input required type="checkbox" name="setuju" />
+                            <span>Saya menyatakan data yang diisi adalah benar & menyetujui ketentuan sekolah.</span>
+                        </label>
+                        <div class="ppdb-actions">
+                            <button class="btn btn--primary ripple" type="submit">Kirim Pendaftaran</button>
+                            <a class="btn btn--ghost ripple" href="#" id="downloadBrosur"><i
+                                    class="fa-solid fa-file-export"></i> Download Brosur</a>
+                        </div>
+                    </form>
+
+                    <aside class="glass-card pad ppdb-aside">
+                        <h3>FAQ PPDB</h3>
+                        <div class="faq" id="faq">
+                            <details>
+                                <summary>Kapan pendaftaran ditutup?</summary>
+                                <p>Gelombang 1 ditutup 30 April 2027, gelombang 2 s.d. 30 Juni 2027.</p>
+                            </details>
+                            <details>
+                                <summary>Berapa biaya pendaftaran?</summary>
+                                <p>Biaya pendaftaran Rp75.000.</p>
+                            </details>
+                            <details>
+                                <summary>Apakah ada beasiswa?</summary>
+                                <p>Tentu saja ada beasiswa (S&K berlaku).</p>
+                            </details>
+                            <details>
+                                <summary>Apa saja jalur pendaftaran yang tersedia dan kuotanya?</summary>
+                                <p>Secara umum ada 2 jalur masuk utama:</p>
+                                <ul>
+                                    <li><b>Jalur Domisili / Zonasi:</b> Mengutamakan jarak rumah terdekat ke sekolah.
+                                        Kuotanya paling besar (untuk TAUD & SD minimal 70%, SMP/SMA minimal 50%).</li>
+                                    <li><b>Jalur Mutasi:</b> Untuk anak yang orang tuanya pindah tugas kerja (kuota
+                                        maksimal 5%).</li>
+                                </ul>
+                            </details>
+                            <details>
+                                <summary>Berapa batas usia minimal dan maksimal untuk mendaftar?</summary>
+                                <ul>
+                                    <li><b>TAUD:</b> Prioritas utama 5 tahun, paling rendah 4 tahun pada 1 Juli tahun
+                                        berjalan.</li>
+                                    <li><b>SD:</b> Prioritas utama 7 tahun, paling rendah 6 tahun pada 1 Juli tahun
+                                        berjalan.</li>
+                                    <li><b>SMP:</b> Berusia maksimal 15 tahun pada 1 Juli tahun berjalan dan memiliki
+                                        ijazah/SKL SD.</li>
+                                    <li><b>SMA:</b> Berusia maksimal 21 tahun pada 1 Juli tahun berjalan dan memiliki
+                                        ijazah/SKL SMP.</li>
+                                </ul>
+                            </details>
+                            <details>
+                                <summary>Dokumen wajib apa saja yang harus disiapkan?</summary>
+                                <p>
+                                <ul>
+                                    <li>Fotokopi Akte Kelahiran</li>
+                                    <li>Fotokopi Kartu Keluarga</li>
+                                    <li>Fotokopi Ijazah/SKL (untuk SMP/SMA)</li>
+                                    <li>Fotokopi Transkrip Nilai (untuk SMP/SMA)</li>
+                                    <li>Fotokopi KTP Orang Tua</li>
+                                    <li>Pas Foto Anak</li>
+                                </ul>
+                                </p>
+                            </details>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ GALERI ============ -->
+        <section class="section" id="galeri" aria-labelledby="h-galeri">
+            <div class="container">
+                <div class="section-head between">
+                    <div>
+                        <span class="eyebrow">Galeri</span>
+                        <h2 id="h-galeri">Momen <span class="grad-text">Shafaa</span></h2>
+                    </div>
+                    <div class="chip-row" id="galleryFilter">
+                        <button class="chip is-active" data-cat="all">Semua</button>
+                        <button class="chip" data-cat="Kegiatan">Kegiatan</button>
+                        <button class="chip" data-cat="Ekstrakurikuler">Ekstrakurikuler</button>
+                        <button class="chip" data-cat="Wisuda">Wisuda</button>
+                        <button class="chip" data-cat="Upacara">Upacara</button>
+                        <button class="chip" data-cat="Lomba">Lomba</button>
+                    </div>
+                </div>
+                <div class="masonry" id="masonry"></div>
+            </div>
+        </section>
+
+        <!-- HTML Lightbox Baru -->
+        <div class="lightbox" id="lightbox">
+            <button class="lb-btn lb-close" id="lbClose">&times;</button>
+            <button class="lb-btn lb-nav lb-prev" id="lbPrev">&#10094;</button>
+            <img id="lbImg" src="" alt="Zoomed Image" />
+            <button class="lb-btn lb-nav lb-next" id="lbNext">&#10095;</button>
+        </div>
+
+        <!-- ============ TESTIMONI ============ -->
+        <section class="section section--tint" aria-label="Testimoni alumni">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Testimoni Alumni</span>
+                    <h2>Kata <span class="grad-text">Mereka</span></h2>
+                </div>
+                <div class="cards-grid">
+                    <blockquote class="glass-card pad test-card" data-reveal>
+                        <p>"Shafaa membentuk saya menjadi pribadi disiplin & percaya diri. Alhamdulillah lolos PTN
+                            impian."</p>
+                        <footer><b>Aisyah, ITB 2024 (contoh)</b></footer>
+                    </blockquote>
+                    <blockquote class="glass-card pad test-card" data-reveal>
+                        <p>"Guru-gurunya sangat perhatian. Program tahfidz dan sains-nya juara!"</p>
+                        <footer><b>Rafi, UGM 2023 (contoh)</b></footer>
+                    </blockquote>
+                    <blockquote class="glass-card pad test-card" data-reveal>
+                        <p>"Lingkungan Islami tapi tetap modern. Saya belajar banyak hal di luar akademik."</p>
+                        <footer><b>Nadya, UI 2025 (contoh)</b></footer>
+                    </blockquote>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ BLOG ============ -->
+        <section class="section" id="blog" aria-labelledby="h-blog">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Blog & Artikel</span>
+                    <h2 id="h-blog">Insight <span class="grad-text">Pendidikan</span></h2>
+                </div>
+                <div class="blog-grid" id="blogGrid"></div>
+                <nav class="pagination" id="pagination" aria-label="Halaman"></nav>
+            </div>
+        </section>
+
+        <!-- ============ KONTAK ============ -->
+        <section class="section section--tint" id="kontak" aria-labelledby="h-kontak">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Kontak</span>
+                    <h2 id="h-kontak">Hubungi <span class="grad-text">Kami</span></h2>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="glass-card pad contact-info" data-reveal>
+                        <div class="ci-item"><span><i class="fa-solid fa-location-dot"></i></span>
+                            <div><b>Alamat</b>
+                                <p>Jalan Raya Cimanglid, Gg. Purnama, RT. 006/001 No. 34,
+                                    Desa Sukamantri, Kec. Tamansari, Kab. Bogor, 16610</p>
+                            </div>
+                        </div>
+                        <div class="ci-item"><span><i class="fa-solid fa-phone"></i></span>
+                            <div><b>Telepon</b>
+                                <p>(+62) 822-6018-9434 </p>
+                            </div>
+                        </div>
+                        <div class="ci-item"><span><i class="fa-solid fa-envelope"></i></span>
+                            <div><b>Email</b>
+                                <p>rbshafaa@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="ci-item"><span><i class="fa-solid fa-clock"></i></span>
+                            <div><b>Jam Operasional</b>
+                                <p>Senin–Jumat: 07.00 – 16.00 WIB<br />Sabtu: 07.00 – 12.00 WIB</p>
+                            </div>
+                        </div>
+
+                        <div class="socials">
+                            <a href="https://www.instagram.com/rb.shafaa/" target="_blank" rel="noopener noreferrer"
+                                class="soc instagram" aria-label="Instagram">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                            <a href="https://web.facebook.com/people/Rumah-Belajar-Shafaa/pfbid02HheGGA8yZc5WnS9Ceqhq5Ugh5EXUGLt9u8iUpSdYHURtkqnuAYmw554DKH2t5Zsdl/?sk=about&locale=id_ID"
+                                target="_blank" rel="noopener noreferrer" class="soc facebook" aria-label="Facebook">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@rumahbelajarshafaa" target="_blank"
+                                rel="noopener noreferrer" class="soc youtube" aria-label="YouTube">
+                                <i class="fa-brands fa-youtube"></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@rb.shafaa/" target="_blank" rel="noopener noreferrer"
+                                class="soc tiktok" aria-label="TikTok">
+                                <i class="fa-brands fa-tiktok"></i>
+                            </a>
+                            <a href="https://wa.me/6282260189434" target="_blank" rel="noopener noreferrer"
+                                class="soc whatsapp" aria-label="WhatsApp">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <form class="glass-card pad contact-form" id="contactForm" novalidate data-reveal>
+                        <label>Nama<input required name="cname" type="text" /></label>
+                        <label>Email<input required name="cemail" type="email" /></label>
+                        <label>Pesan<textarea required name="cmsg" rows="5"></textarea></label>
+                        <button class="btn btn--primary ripple" type="submit" href="mailto:rbshafaa@gmail.com">Kirim
+                            Pesan</button>
+                    </form>
+                </div>
+
+                <div class="map-wrap" data-reveal>
+                    <!-- iframe title="Lokasi Rumah Belajar Shafaa" loading="lazy" src="https://www.google.com/maps?q=Bogor&output=embed" style="border:0;width:100%;height:340px;border-radius:24px" allowfullscreen></iframe -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ NEWSLETTER ============ -->
+        <section class="section" aria-label="Berlangganan newsletter">
+            <div class="container">
+                <div class="newsletter glass-card">
+                    <div>
+                        <span class="eyebrow">Newsletter</span>
+                        <h3>Dapatkan info & artikel terbaru</h3>
+                        <p>Kirim langsung ke email kamu, tanpa spam.</p>
+                    </div>
+                    <form id="newsForm" class="news-form">
+                        <input required type="email" placeholder="Alamat email kamu" aria-label="Email" />
+                        <button class="btn btn--primary ripple" type="submit"
+                            href="mailto:rbshafaa@gmail.com">Berlangganan</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer" role="contentinfo">
+        <div class="container footer__grid">
+            <div>
+                <a href="#home" class="brand">
+                    <img src="https://avatars.githubusercontent.com/u/320439436?v=4" alt="Logo" class="brand__logo"
+                        onerror="this.style.display='none'" />
+                    <span class="brand__text"><span class="brand__name">Rumah Belajar</span><span
+                            class="brand__sub">Shafaa</span></span>
+                </a>
+                <p class="muted">Menumbuhkan generasi Sholeh, Cerdas & Intelek dengan pendidikan modern & karakter
+                    Islami.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul class="foot-list">
+                    <li><a href="#profil">Profil</a></li>
+                    <li><a href="#akademik">Akademik</a></li>
+                    <li><a href="#ppdb">PPDB</a></li>
+                    <li><a href="#galeri">Galeri</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Kontak</h4>
+                <ul class="foot-list">
+                    <li>Jl. Raya Cimanglid, Kab. Bogor</li>
+                    <li>(+62) 822-6018-9434</li>
+                    <li>rbshafaa@gmail.com</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Ikuti Kami</h4>
+                <div class="socials">
+                    <div class="socials">
+                        <a href="https://www.instagram.com/rb.shafaa/" target="_blank" rel="noopener noreferrer"
+                            class="soc instagram" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://web.facebook.com/people/Rumah-Belajar-Shafaa/pfbid02HheGGA8yZc5WnS9Ceqhq5Ugh5EXUGLt9u8iUpSdYHURtkqnuAYmw554DKH2t5Zsdl/?sk=about&locale=id_ID"
+                            target="_blank" rel="noopener noreferrer" class="soc facebook" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@rumahbelajarshafaa" target="_blank" rel="noopener noreferrer"
+                            class="soc youtube" aria-label="YouTube">
+                            <i class="fa-brands fa-youtube"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@rb.shafaa/" target="_blank" rel="noopener noreferrer"
+                            class="soc tiktok" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                        <a href="https://wa.me/6282260189434" target="_blank" rel="noopener noreferrer"
+                            class="soc whatsapp" aria-label="WhatsApp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p>© <span id="year"></span> Rumah Belajar Shafaa. Sholeh, Cerdas & Intelek.</p>
+            </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button class="to-top" id="toTop" aria-label="Kembali ke atas">↑</button>
+
+    <!-- Modal -->
+    <div class="modal" id="modal" role="dialog" aria-hidden="true" aria-modal="true">
+        <div class="modal__panel">
+            <button class="modal__close" id="modalClose" aria-label="Tutup">✕</button>
+            <h3 id="modalTitle">Judul</h3>
+            <p id="modalBody">Konten pengumuman.</p>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-hidden="true" aria-modal="true">
+        <button class="lb-close" id="lbClose" aria-label="Tutup">✕</button>
+        <button class="lb-nav lb-prev" id="lbPrev" aria-label="Sebelumnya">‹</button>
+        <img id="lbImg" alt="" />
+        <button class="lb-nav lb-next" id="lbNext" aria-label="Selanjutnya">›</button>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="/script.js" defer></script>
+</body>
+
+</html>

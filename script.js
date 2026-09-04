@@ -34,7 +34,7 @@
     const now = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', now);
     localStorage.setItem('shafaa-theme', now);
-    toast(now === 'dark' ? 'Mode gelap aktif 🌙' : 'Mode terang aktif ☀️');
+    toast(now === 'dark' ? 'Mode gelap aktif' : 'Mode terang aktif');
   });
 
   /* ---------- Navbar scroll + active link ---------- */
@@ -346,14 +346,13 @@
     <article class="glass-card blog-card" data-reveal>
       <div class="thumb">
         <img loading="lazy" alt="${p.title}" src="${p.img}" 
-             onerror="this.onerror=null; this.src='https://placehold.co/800x600/e2e8f0/475569.png?text=Belum%20Ada%20Thumbnail';" />
+             onerror="handleImageError(this)" />
       </div>
       <div class="body">
         <div class="meta"><span>${p.date}</span><span class="badge badge--purple">${p.cat}</span></div>
         <h3>${p.title}</h3>
         <p>${p.excerpt}</p>
         <div class="actions">
-          <!-- Modifikasi di bagian ini: Menyimpan judul dan url (jika ada) ke dalam dataset -->
           <button class="link-arrow read-more-btn" data-title="${p.title}" data-url="${p.url || ''}">Baca Selengkapnya →</button>
           <button class="icon-mini" data-share="${p.title}" data-url="${p.url || ''}" aria-label="Bagikan">
             <i class="fa-regular fa-share-from-square"></i>
@@ -512,8 +511,8 @@
 
     // Update stepper visual
     $$('.step').forEach((s, i) => s.classList.toggle('is-active', i < 4));
-    toast('Pendaftaran berhasil dikirim! ✅', 'success');
-    setTimeout(() => openModal('Terima kasih! 🎉', 'Data pendaftaran Anda telah kami terima. Tim PPDB akan menghubungi via email dalam 1x24 jam kerja.'), 400);
+    toast('Pendaftaran berhasil dikirim!', 'success');
+    setTimeout(() => openModal('Terima kasih!', 'Data pendaftaran Anda telah kami terima. Tim PPDB akan menghubungi via email dalam 1x24 jam kerja.'), 400);
     ppdb.reset();
   });
 
@@ -525,7 +524,7 @@
     const a = document.createElement('a');
     a.href = url; a.download = 'brosur-ppdb-shafaa.txt'; a.click();
     URL.revokeObjectURL(url);
-    toast('Brosur berhasil diunduh 📄', 'success');
+    toast('Brosur berhasil diunduh', 'success');
   });
 
   /* ---------- Stepper Logic ---------- */
@@ -554,7 +553,7 @@
     e.preventDefault();
     const f = e.target;
     if (!f.checkValidity()) return toast('Lengkapi semua kolom', 'error');
-    toast('Pesan terkirim! Kami akan segera membalas 💌', 'success');
+    toast('Pesan terkirim! Kami akan segera membalas', 'success');
     f.reset();
   });
 
@@ -562,7 +561,7 @@
   on($('#newsForm'), 'submit', (e) => {
     e.preventDefault();
     if (!e.target.checkValidity()) return toast('Email tidak valid', 'error');
-    toast('Berhasil berlangganan newsletter Shafaa! 📩', 'success');
+    toast('Berhasil berlangganan newsletter Shafaa!', 'success');
     e.target.reset();
   });
 
@@ -575,6 +574,25 @@
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => toastEl.classList.remove('is-show'), 3200);
   }
+
+  /* ---------- Image Error & Offline Handler ---------- (TARUH DISINI) */
+  window.handleImageError = function(imgElement) {
+    imgElement.onerror = null; 
+    
+    if (!navigator.onLine) {
+      imgElement.src = 'https://placehold.co/800x600/1e1b4b/c7bee5.png?text=Mode%20Offline%20(Gambar%20Dimatikan)';
+    } else {
+      imgElement.src = 'https://placehold.co/800x600/e2e8f0/475569.png?text=Thumbnail%20Tidak%20Tersedia';
+    }
+  };
+
+  window.addEventListener('online', () => {
+    toast('Koneksi internet pulih', 'success');
+  });
+
+  window.addEventListener('offline', () => {
+    toast('Anda sedang offline. Beberapa gambar mungkin tidak dimuat', 'error');
+  });
 
   /* ---------- Ripple ---------- */
   $$('.ripple').forEach(b => on(b, 'click', (e) => {

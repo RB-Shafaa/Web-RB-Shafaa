@@ -1540,12 +1540,19 @@ p {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   gap: 24px;
+  align-items: start; /* Mencegah elemen kolom meregang tidak beraturan */
 }
 
 .ppdb-form {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  padding: 32px; /* Memberi ruang padding di dalam form */
+  box-shadow: var(--shadow-md);
 }
 
 .ppdb-form label,
@@ -1572,6 +1579,7 @@ p {
   font-size: .95rem;
   font-family: inherit;
   transition: border-color .25s, box-shadow .25s;
+  width: 100%; /* Memastikan input memenuhi lebar kolom */
 }
 
 .ppdb-form input:focus,
@@ -1607,6 +1615,15 @@ p {
   gap: 12px;
   flex-wrap: wrap;
   margin-top: 6px;
+}
+
+.ppdb-aside {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  box-shadow: var(--shadow-sm);
 }
 
 .ppdb-aside .faq details {
@@ -2328,6 +2345,29 @@ p {
 
   .footer__bottom {
     text-align: center;
+    justify-content: center;
+  }
+
+  .ppdb-grid {
+    grid-template-columns: 1fr; /* Berubah jadi 1 kolom ke bawah */
+    gap: 20px;
+  }
+
+  .ppdb-form {
+    padding: 20px; /* Padding diperkecil agar pas di layar HP */
+  }
+
+  .form-row {
+    grid-template-columns: 1fr; /* Kolom nama/email di form jadi menumpuk ke bawah */
+  }
+
+  .ppdb-actions {
+    flex-direction: column; /* Tombol daftar & brosur berderet ke bawah */
+    width: 100%;
+  }
+
+  .ppdb-actions .btn {
+    width: 100%; /* Tombol melebar penuh mengikuti layar HP */
     justify-content: center;
   }
 }

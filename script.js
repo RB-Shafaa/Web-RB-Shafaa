@@ -43,6 +43,9 @@
   const navLinks = $$('.nav__link');
   const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 
+  let lastScrollTop = 0;
+  const scrollThreshold = 50;
+
   function onScroll() {
     const y = window.scrollY;
     navbar.classList.toggle('is-scrolled', y > 20);
@@ -59,7 +62,21 @@
 
     // Back to top
     $('#toTop').classList.toggle('is-visible', y > 500);
+
+    // Auto Hide/Show Navbar on Scroll
+    if (y <= scrollThreshold) {
+      navbar.classList.remove('is-hidden');
+    } else {
+      if (y > lastScrollTop) {
+        navbar.classList.add('is-hidden');
+      } else {
+        navbar.classList.remove('is-hidden');
+      }
+    }
+    
+    lastScrollTop = y <= 0 ? 0 : y;
   }
+  
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
@@ -235,9 +252,9 @@
 
     // Pertahankan fallback error image
     lbImg.onerror = function () {
-      this.onerror = null;
-      this.src = 'https://placehold.co/800x600/e2e8f0/475569?text=Gambar+Tidak+Tersedia';
-    };
+  this.onerror = null;
+  this.src = 'https://placehold.co/800x600/e2e8f0/475569.png?text=Gambar%20Tidak%20Tersedia';
+};
 
     lb.classList.add('is-open');
     document.body.style.overflow = 'hidden'; // Kunci scroll background
@@ -284,7 +301,7 @@
     masonryElement.innerHTML = list.map((g, i) => `
     <div class="item" data-index="${i}">
         <span class="cat">${g.cat}</span>
-        <img loading="lazy" alt="${g.cat}" src="${g.src}" onerror="this.onerror=null; this.src='https://placehold.co/800x600/e2e8f0/475569?text=Gambar+Tidak+Tersedia';" />
+        <img loading="lazy" alt="${g.cat}" src="${g.src}" onerror="this.onerror=null; this.src='https://placehold.co/800x600/e2e8f0/475569.png?text=Gambar%20Tidak%20Tersedia';" />
     </div>`).join('');
 
     // Hubungkan item yang dirender ke fungsi Lightbox baru
@@ -314,7 +331,7 @@
     { title: 'Persiapan Ujian Nasional: Panduan Lengkap', cat: 'Akademik', date: '05 Jan 2026', img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=70', excerpt: 'Susun jadwal, kelola stres, dan tingkatkan performa.', url: 'persiapan_ujian.html' },
     { title: 'AI di Kelas: Peluang & Tantangan', cat: 'Teknologi', date: '28 Des 2025', img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=70', excerpt: 'Bagaimana guru bijak memanfaatkan AI.', url: 'ai_dikelas.html' },
     { title: 'Menumbuhkan Minat Baca pada Siswa', cat: 'Tips', date: '20 Des 2025', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80', excerpt: 'Trik sederhana yang bisa diterapkan di rumah.', url: 'menumbuhkan_minat_baca.html' },
-    { title: 'Public Speaking Sejak SMP', cat: 'Life Skill', date: '15 Des 2025', img: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=70', excerpt: 'Latihan simple untuk anak percaya diri berbicara.', url: 'publik_speakinghtml.html' }
+    { title: 'Public Speaking Sejak SMP', cat: 'Life Skill', date: '15 Des 2025', img: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=70', excerpt: 'Latihan simple untuk anak percaya diri berbicara.', url: 'publik_speaking.html.html' }
   ];
 
   const perPage = 6;
@@ -329,7 +346,7 @@
     <article class="glass-card blog-card" data-reveal>
       <div class="thumb">
         <img loading="lazy" alt="${p.title}" src="${p.img}" 
-             onerror="this.onerror=null; this.src='https://placehold.co/800x600/e2e8f0/475569?text=Gambar+Tidak+Tersedia';" />
+             onerror="this.onerror=null; this.src='https://placehold.co/800x600/e2e8f0/475569.png?text=Belum%20Ada%20Thumbnail';" />
       </div>
       <div class="body">
         <div class="meta"><span>${p.date}</span><span class="badge badge--purple">${p.cat}</span></div>
@@ -379,22 +396,51 @@
 
     $$('#blogGrid [data-copy]').forEach(btn => on(btn, 'click', () => {
       navigator.clipboard.writeText(location.href + '#' + encodeURIComponent(btn.dataset.copy));
-      toast('Link artikel disalin! 🔗', 'success');
+      toast('Link artikel disalin!', 'success');
     }));
 
     // -------------------------------------------------------------
     // LOGIKA BARU UNTUK TOMBOL "Baca Selengkapnya"
     // -------------------------------------------------------------
-    $$('#blogGrid .read-more-btn').forEach(btn => on(btn, 'click', () => {
+    $$('#blogGrid .read-more-btn').forEach(btn => on(btn, 'click', async (e) => {
       const targetUrl = btn.dataset.url;
       const articleTitle = btn.dataset.title;
 
+      // Ubah teks tombol sementara agar user tahu sistem sedang mengecek
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Memuat...';
+      btn.style.opacity = '0.7';
+      btn.style.pointerEvents = 'none'; // Cegah klik dobel
+
       if (targetUrl !== '') {
-        // Jika URL ada (file html tersedia), arahkan ke halaman tersebut
-        window.location.href = targetUrl;
+        try {
+          // Cek apakah file HTML-nya benar-benar ada di server
+          const response = await fetch(targetUrl, { method: 'HEAD' });
+          
+          if (response.ok) {
+            // Jika valid (status 200), arahkan ke halaman
+            window.location.href = targetUrl;
+          } else {
+            // Jika link diisi tapi filenya tidak ditemukan (status 404, dll)
+            openModal(articleTitle, 'Mohon maaf, halaman untuk artikel ini belum tersedia atau sedang dalam perbaikan.');
+            // Kembalikan tombol seperti semula
+            btn.innerHTML = originalText;
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = 'auto';
+          }
+        } catch (error) {
+          // Jika terjadi error koneksi jaringan
+          openModal(articleTitle, 'Gagal memuat artikel. Silakan periksa koneksi internet Anda.');
+          btn.innerHTML = originalText;
+          btn.style.opacity = '1';
+          btn.style.pointerEvents = 'auto';
+        }
       } else {
-        // Jika URL kosong, tampilkan modal "Segera Tayang"
+        // Jika URL memang dibiarkan kosong
         openModal(articleTitle, 'Artikel ini akan segera tayang penuh di halaman blog Shafaa. Nantikan update terbarunya!');
+        btn.innerHTML = originalText;
+        btn.style.opacity = '1';
+        btn.style.pointerEvents = 'auto';
       }
     }));
   }

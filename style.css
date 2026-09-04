@@ -72,6 +72,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-h);
+  overflow-x: hidden; /* TAMBAHKAN INI: Kunci utama pencegah scroll horizontal */
 }
 
 body {
@@ -83,6 +84,9 @@ body {
   -webkit-font-smoothing: antialiased;
   transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
   overflow-x: hidden;
+  width: 100%;
+  position: relative; 
+  padding-top: var(--nav-h); /* TAMBAHKAN INI: Memberi ruang untuk navbar fixed */
 }
 
 img {
@@ -364,14 +368,20 @@ p {
 
 /* -------- Navbar -------- */
 .navbar {
-  position: sticky;
+  position: fixed; /* UBAH: dari sticky menjadi fixed */
   top: 0;
+  left: 0; /* TAMBAHKAN INI */
+  width: 100%; /* TAMBAHKAN INI */
   z-index: 100;
   height: var(--nav-h);
   backdrop-filter: blur(16px);
   background: color-mix(in oklab, var(--bg) 70%, transparent);
   border-bottom: 1px solid transparent;
-  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  transition: transform 0.35s var(--ease), background var(--dur) var(--ease), border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.navbar.is-hidden {
+  transform: translateY(-100%);
 }
 
 .navbar.is-scrolled {
@@ -1300,28 +1310,54 @@ p {
 /* -------- Tabs -------- */
 .tabs {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  padding: 6px;
+  /* HAPUS flex-wrap: wrap; agar tidak turun ke baris bawah */
+  gap: 8px;
+  padding: 8px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 999px;
   width: fit-content;
-  margin: 0 auto 28px;
+  max-width: 100%; /* Memastikan tidak melewati lebar layar */
+  margin: 0 auto 32px;
   backdrop-filter: blur(16px);
+  
+  /* Logika Mobile Scroll */
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap; /* Teks tidak boleh turun baris */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Scroll mulus di iOS */
+  
+  /* Sembunyikan scrollbar agar estetis */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Sembunyikan scrollbar untuk Chrome/Safari/Edge */
+.tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .tab {
-  padding: 10px 20px;
+  padding: 10px 24px;
   border-radius: 999px;
   font-weight: 600;
+  font-size: 0.95rem;
   color: var(--text-2);
-  transition: all .25s var(--ease);
+  transition: all .35s var(--ease);
+  flex-shrink: 0; /* Mencegah tombol mengecil/gepeng saat dilayar sempit */
+}
+
+/* Efek saat cursor diarahkan (hover) */
+.tab:hover {
+  color: var(--text);
+  background: rgba(108, 59, 255, 0.08); /* Efek sentuhan ungu transparan */
 }
 
 .tab.is-active {
   background: var(--grad-brand);
   color: #fff;
+  box-shadow: 0 4px 14px rgba(108, 59, 255, 0.25); /* Bayangan glowing */
 }
 
 .tab-panel {
@@ -1338,7 +1374,6 @@ p {
     opacity: 0;
     transform: translateY(12px);
   }
-
   to {
     opacity: 1;
     transform: none;
@@ -2231,20 +2266,26 @@ p {
   .nav {
     position: fixed;
     top: var(--nav-h);
-    right: -100%;
+    right: 0; /* UBAH: Jangan gunakan -100% */
+    transform: translateX(100%); /* TAMBAHKAN: Geser keluar layar dengan transform */
     width: 82%;
     max-width: 340px;
     height: calc(100vh - var(--nav-h));
     background: var(--bg);
     border-left: 1px solid var(--border);
     padding: 24px;
-    transition: right .35s var(--ease);
+    transition: transform .35s var(--ease), visibility .35s; /* UBAH: Animasikan transform */
     box-shadow: var(--shadow-lg);
+    visibility: hidden; /* TAMBAHKAN: Benar-benar sembunyikan elemen saat ditutup */
   }
 
   .nav.is-open {
-    right: 0;
+    transform: translateX(0); /* TAMBAHKAN: Kembalikan posisinya ke normal */
+    visibility: visible;
   }
+  
+  /* Sisa kode di dalam media query 860px biarkan saja... */
+
 
   .nav__list {
     flex-direction: column;

@@ -72,7 +72,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--nav-h);
-  overflow-x: hidden; /* TAMBAHKAN INI: Kunci utama pencegah scroll horizontal */
+  overflow-x: hidden;
+  /* TAMBAHKAN INI: Kunci utama pencegah scroll horizontal */
 }
 
 body {
@@ -85,8 +86,9 @@ body {
   transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
   overflow-x: hidden;
   width: 100%;
-  position: relative; 
-  padding-top: var(--nav-h); /* TAMBAHKAN INI: Memberi ruang untuk navbar fixed */
+  position: relative;
+  padding-top: var(--nav-h);
+  /* TAMBAHKAN INI: Memberi ruang untuk navbar fixed */
 }
 
 img {
@@ -368,10 +370,13 @@ p {
 
 /* -------- Navbar -------- */
 .navbar {
-  position: fixed; /* UBAH: dari sticky menjadi fixed */
+  position: fixed;
+  /* UBAH: dari sticky menjadi fixed */
   top: 0;
-  left: 0; /* TAMBAHKAN INI */
-  width: 100%; /* TAMBAHKAN INI */
+  left: 0;
+  /* TAMBAHKAN INI */
+  width: 100%;
+  /* TAMBAHKAN INI */
   z-index: 100;
   height: var(--nav-h);
   backdrop-filter: blur(16px);
@@ -1256,6 +1261,22 @@ p {
   margin-bottom: 14px;
 }
 
+.teacher-avatar-icon {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 20px;
+  background: var(--grad-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.teacher-avatar-icon i {
+  font-size: 4.5rem; /* Ukuran besar ikon */
+  color: var(--purple); /* Warna ikon menyesuaikan tema ungu Shafaa */
+}
+
 .teacher-card b {
   display: block;
   font-family: var(--font-display);
@@ -1317,17 +1338,20 @@ p {
   border: 1px solid var(--border);
   border-radius: 999px;
   width: fit-content;
-  max-width: 100%; /* Memastikan tidak melewati lebar layar */
+  max-width: 100%;
+  /* Memastikan tidak melewati lebar layar */
   margin: 0 auto 32px;
   backdrop-filter: blur(16px);
-  
+
   /* Logika Mobile Scroll */
   overflow-x: auto;
   overflow-y: hidden;
-  white-space: nowrap; /* Teks tidak boleh turun baris */
+  white-space: nowrap;
+  /* Teks tidak boleh turun baris */
   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch; /* Scroll mulus di iOS */
-  
+  -webkit-overflow-scrolling: touch;
+  /* Scroll mulus di iOS */
+
   /* Sembunyikan scrollbar agar estetis */
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -1345,19 +1369,22 @@ p {
   font-size: 0.95rem;
   color: var(--text-2);
   transition: all .35s var(--ease);
-  flex-shrink: 0; /* Mencegah tombol mengecil/gepeng saat dilayar sempit */
+  flex-shrink: 0;
+  /* Mencegah tombol mengecil/gepeng saat dilayar sempit */
 }
 
 /* Efek saat cursor diarahkan (hover) */
 .tab:hover {
   color: var(--text);
-  background: rgba(108, 59, 255, 0.08); /* Efek sentuhan ungu transparan */
+  background: rgba(108, 59, 255, 0.08);
+  /* Efek sentuhan ungu transparan */
 }
 
 .tab.is-active {
   background: var(--grad-brand);
   color: #fff;
-  box-shadow: 0 4px 14px rgba(108, 59, 255, 0.25); /* Bayangan glowing */
+  box-shadow: 0 4px 14px rgba(108, 59, 255, 0.25);
+  /* Bayangan glowing */
 }
 
 .tab-panel {
@@ -1374,6 +1401,7 @@ p {
     opacity: 0;
     transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: none;
@@ -1540,7 +1568,8 @@ p {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   gap: 24px;
-  align-items: start; /* Mencegah elemen kolom meregang tidak beraturan */
+  align-items: start;
+  /* Mencegah elemen kolom meregang tidak beraturan */
 }
 
 .ppdb-form {
@@ -1551,7 +1580,8 @@ p {
   border: 1px solid var(--border);
   backdrop-filter: blur(20px);
   border-radius: var(--radius-lg);
-  padding: 32px; /* Memberi ruang padding di dalam form */
+  padding: 32px;
+  /* Memberi ruang padding di dalam form */
   box-shadow: var(--shadow-md);
 }
 
@@ -1579,7 +1609,8 @@ p {
   font-size: .95rem;
   font-family: inherit;
   transition: border-color .25s, box-shadow .25s;
-  width: 100%; /* Memastikan input memenuhi lebar kolom */
+  width: 100%;
+  /* Memastikan input memenuhi lebar kolom */
 }
 
 .ppdb-form input:focus,
@@ -2083,6 +2114,10 @@ p {
 }
 
 .footer__bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   padding-top: 30px;
   border-top: 1px solid var(--border);
   text-align: center;
@@ -2283,24 +2318,29 @@ p {
   .nav {
     position: fixed;
     top: var(--nav-h);
-    right: 0; /* UBAH: Jangan gunakan -100% */
-    transform: translateX(100%); /* TAMBAHKAN: Geser keluar layar dengan transform */
+    right: 0;
+    /* UBAH: Jangan gunakan -100% */
+    transform: translateX(100%);
+    /* TAMBAHKAN: Geser keluar layar dengan transform */
     width: 82%;
     max-width: 340px;
     height: calc(100vh - var(--nav-h));
     background: var(--bg);
     border-left: 1px solid var(--border);
     padding: 24px;
-    transition: transform .35s var(--ease), visibility .35s; /* UBAH: Animasikan transform */
+    transition: transform .35s var(--ease), visibility .35s;
+    /* UBAH: Animasikan transform */
     box-shadow: var(--shadow-lg);
-    visibility: hidden; /* TAMBAHKAN: Benar-benar sembunyikan elemen saat ditutup */
+    visibility: hidden;
+    /* TAMBAHKAN: Benar-benar sembunyikan elemen saat ditutup */
   }
 
   .nav.is-open {
-    transform: translateX(0); /* TAMBAHKAN: Kembalikan posisinya ke normal */
+    transform: translateX(0);
+    /* TAMBAHKAN: Kembalikan posisinya ke normal */
     visibility: visible;
   }
-  
+
   /* Sisa kode di dalam media query 860px biarkan saja... */
 
 
@@ -2349,25 +2389,30 @@ p {
   }
 
   .ppdb-grid {
-    grid-template-columns: 1fr; /* Berubah jadi 1 kolom ke bawah */
+    grid-template-columns: 1fr;
+    /* Berubah jadi 1 kolom ke bawah */
     gap: 20px;
   }
 
   .ppdb-form {
-    padding: 20px; /* Padding diperkecil agar pas di layar HP */
+    padding: 20px;
+    /* Padding diperkecil agar pas di layar HP */
   }
 
   .form-row {
-    grid-template-columns: 1fr; /* Kolom nama/email di form jadi menumpuk ke bawah */
+    grid-template-columns: 1fr;
+    /* Kolom nama/email di form jadi menumpuk ke bawah */
   }
 
   .ppdb-actions {
-    flex-direction: column; /* Tombol daftar & brosur berderet ke bawah */
+    flex-direction: column;
+    /* Tombol daftar & brosur berderet ke bawah */
     width: 100%;
   }
 
   .ppdb-actions .btn {
-    width: 100%; /* Tombol melebar penuh mengikuti layar HP */
+    width: 100%;
+    /* Tombol melebar penuh mengikuti layar HP */
     justify-content: center;
   }
 }

@@ -73,10 +73,10 @@
         navbar.classList.remove('is-hidden');
       }
     }
-    
+
     lastScrollTop = y <= 0 ? 0 : y;
   }
-  
+
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
@@ -104,7 +104,7 @@
     { title: 'Sambutan Kepala Sekolah', href: '#sambutan', desc: 'Salam & pengantar dari Kepala Sekolah' },
     { title: 'Profil Sekolah', href: '#profil', desc: 'Sejarah, visi, misi, guru, fasilitas' },
     { title: 'Kurikulum & Akademik', href: '#akademik', desc: 'Kurikulum, jadwal, kalender, prestasi' },
-    { title: 'PPDB Online', href: '#ppdb', desc: 'Pendaftaran siswa baru' },
+    { title: 'SPMB Online', href: '#ppdb', desc: 'Pendaftaran siswa baru' },
     { title: 'Galeri', href: '#galeri', desc: 'Momen kegiatan Shafaa' },
     { title: 'Blog', href: '#blog', desc: 'Artikel & insight pendidikan' },
     { title: 'Kontak', href: '#kontak', desc: 'Alamat, telepon, email, sosial media' },
@@ -194,7 +194,7 @@
   $('#slider')?.addEventListener('mouseleave', () => slideTimer = setInterval(() => go(idx + 1), 5000));
 
   /* ---------- Teachers data ---------- */
-  const teachers = [
+  /*const teachers = [
     { name: 'Ust. Sri Rahayu, S.Pd.', subj: 'Matematika', cat: 'Sains', email: 'sri@shafaa.sch.id', img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=70' },
     { name: 'Ust. Mulyani', subj: 'Fisika', cat: 'Sains', email: 'mulyani@shafaa.sch.id', img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=70' },
     { name: 'Ust. Dasinih', subj: 'Fiqih', cat: 'Agama', email: 'dasinih@shafaa.sch.id', img: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=70' },
@@ -210,6 +210,37 @@
     tgrid.innerHTML = teachers.filter(t => cat === 'all' || t.cat === cat).map(t => `
       <article class="glass-card teacher-card" data-reveal>
         <img loading="lazy" alt="Foto ${t.name}" src="${t.img}" />
+        <b>${t.name}</b>
+        <div class="subj">${t.subj}</div>
+        <div class="em">${t.email}</div>
+      </article>`).join('');
+    $$('#teachersGrid [data-reveal]').forEach(el => { el.classList.add('is-visible'); });
+  }
+  renderTeachers();
+  $$('#teacherFilter .chip').forEach(c => on(c, 'click', () => {
+    $$('#teacherFilter .chip').forEach(x => x.classList.remove('is-active'));
+    c.classList.add('is-active');
+    renderTeachers(c.dataset.subject);
+  }));*/
+
+  const teachers = [
+    { name: 'Ust. Sri Rahayu, S.Pd.', subj: 'Matematika', cat: 'Sains', email: '' },
+    { name: 'Ust. Mulyani', subj: 'Fisika', cat: 'Sains', email: '' },
+    { name: 'Ust. Dasinih', subj: 'Fiqih', cat: 'Agama', email: '' },
+    { name: 'Ust. Citra Arum Sari', subj: 'Bahasa Inggris', cat: 'Bahasa', email: '' },
+    { name: 'Ust. Luvita Rahayu', subj: 'Bahasa Arab', cat: 'Bahasa', email: '' },
+    { name: 'Ust. Putri Wulandari', subj: 'Sejarah', cat: 'Sosial', email: '' },
+    { name: 'Ust. Mariyah Qitbiyah', subj: 'Biologi', cat: 'Sains', email: '' },
+    { name: 'Ust. Anisatur Rohmah', subj: 'Ekonomi', cat: 'Sosial', email: '' },
+  ];
+  const tgrid = $('#teachersGrid');
+  function renderTeachers(cat = 'all') {
+    if (!tgrid) return;
+    tgrid.innerHTML = teachers.filter(t => cat === 'all' || t.cat === cat).map(t => `
+      <article class="glass-card teacher-card" data-reveal>
+        <div class="teacher-avatar-icon">
+          <i class="fa-solid fa-circle-user" aria-hidden="true"></i>
+        </div>
         <b>${t.name}</b>
         <div class="subj">${t.subj}</div>
         <div class="em">${t.email}</div>
@@ -252,9 +283,9 @@
 
     // Pertahankan fallback error image
     lbImg.onerror = function () {
-  this.onerror = null;
-  this.src = 'https://placehold.co/800x600/e2e8f0/475569.png?text=Gambar%20Tidak%20Tersedia';
-};
+      this.onerror = null;
+      this.src = 'https://placehold.co/800x600/e2e8f0/475569.png?text=Gambar%20Tidak%20Tersedia';
+    };
 
     lb.classList.add('is-open');
     document.body.style.overflow = 'hidden'; // Kunci scroll background
@@ -415,7 +446,7 @@
         try {
           // Cek apakah file HTML-nya benar-benar ada di server
           const response = await fetch(targetUrl, { method: 'HEAD' });
-          
+
           if (response.ok) {
             // Jika valid (status 200), arahkan ke halaman
             window.location.href = targetUrl;
@@ -460,7 +491,7 @@
   // Popup pengumuman satu kali per sesi
   setTimeout(() => {
     if (!sessionStorage.getItem('shafaa-popup')) {
-      openModal('🎉 PPDB 2027/2028 Dibuka!', 'Gelombang 1 dibuka 1 Maret — 30 April 2027. Daftar sekarang & dapatkan diskon awal + kesempatan beasiswa prestasi.');
+      openModal('🎉 PPDB 2027/2028 Dibuka!', 'Gelombang 1 dibuka 1 Maret — 30 April 2027, Gelombang 2 dibuka 1 Mei — 30 Juni 2027. Daftar sekarang & dapatkan diskon awal + kesempatan beasiswa prestasi.');
       sessionStorage.setItem('shafaa-popup', '1');
     }
   }, 2500);
@@ -576,9 +607,9 @@
   }
 
   /* ---------- Image Error & Offline Handler ---------- (TARUH DISINI) */
-  window.handleImageError = function(imgElement) {
-    imgElement.onerror = null; 
-    
+  window.handleImageError = function (imgElement) {
+    imgElement.onerror = null;
+
     if (!navigator.onLine) {
       imgElement.src = 'https://placehold.co/800x600/1e1b4b/c7bee5.png?text=Mode%20Offline%20(Gambar%20Dimatikan)';
     } else {

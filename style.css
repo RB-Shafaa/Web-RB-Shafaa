@@ -904,6 +904,15 @@ p {
   margin-bottom: 60px;
 }
 
+/* Mengatur ukuran gambar agar pas rasio 4:3 (800x600) dan tidak gepeng */
+.two-col__media img.round-img {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: 16 / 9 !important; /* Kunci rasio 800x600px */
+  object-fit: cover !important;  /* Auto crop rapi */
+  display: block !important;
+}
+
 .portrait {
   border-radius: 32px;
   overflow: hidden;

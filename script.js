@@ -284,7 +284,7 @@
     // Pertahankan fallback error image
     lbImg.onerror = function () {
       this.onerror = null;
-      this.src = 'https://placehold.co/800x600/e2e8f0/475569.png?text=Gambar%20Tidak%20Tersedia';
+      this.src = 'images/Modal Gambar Tidak Tersedia.png';
     };
 
     lb.classList.add('is-open');
@@ -332,7 +332,7 @@
     masonryElement.innerHTML = list.map((g, i) => `
     <div class="item" data-index="${i}">
         <span class="cat">${g.cat}</span>
-        <img loading="lazy" alt="${g.cat}" src="${g.src}" onerror="this.onerror=null; this.src='https://placehold.co/800x600/e2e8f0/475569.png?text=Gambar%20Tidak%20Tersedia';" />
+        <img loading="lazy" alt="${g.cat}" src="${g.src}" onerror="this.onerror=null; this.src='images/Modal Gambar Tidak Tersedia.png';" />
     </div>`).join('');
 
     // Hubungkan item yang dirender ke fungsi Lightbox baru
@@ -352,17 +352,17 @@
   /* ---------- Blog ---------- */
   const posts = [
     // Tambahkan properti "url: 'nama_file.html'" untuk artikel yang halamannya sudah jadi
-    { title: '5 Tips Belajar Efektif untuk Siswa Digital', cat: 'Tips', date: '10 Feb 2026', img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=70', excerpt: 'Pelajari strategi belajar yang tetap fokus di era distraksi digital.', url: 'tips_belajar_digital.html' },
-    { title: 'Menanamkan Adab Sejak Dini di Sekolah', cat: 'Karakter', date: '02 Feb 2026', img: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=70', excerpt: 'Mengapa adab harus lebih dulu diajarkan dibanding ilmu.', url: 'adab_di_sekolah.html' },
-    { title: 'Coding untuk Anak: Mulai dari Mana?', cat: 'Teknologi', date: '28 Jan 2026', img: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=70', excerpt: 'Panduan orang tua memperkenalkan coding secara menyenangkan.', url: 'coding_untuk_anak.html' },
-    { title: 'Manfaat Program Tahfidz Al-Qur\'an', cat: 'Religi', date: '20 Jan 2026', img: 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=1200&q=80', excerpt: 'Dampak positif hafalan Al-Qur\'an bagi kecerdasan anak.', url: 'program_tahfidz_al_qur_an.html' },
+    { title: '5 Tips Belajar Efektif untuk Siswa Digital', cat: 'Tips', date: '10 Feb 2026', img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=70', excerpt: 'Pelajari strategi belajar yang tetap fokus di era distraksi digital.', url: 'artikel/tips_belajar_digital.html' },
+    { title: 'Menanamkan Adab Sejak Dini di Sekolah', cat: 'Karakter', date: '02 Feb 2026', img: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=70', excerpt: 'Mengapa adab harus lebih dulu diajarkan dibanding ilmu.', url: 'artikel/adab_di_sekolah.html' },
+    { title: 'Coding untuk Anak', cat: 'Teknologi', date: '28 Jan 2026', img: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=70', excerpt: 'Panduan orang tua memperkenalkan coding secara menyenangkan.', url: 'artikel/coding_untuk_anak.html' },
+    { title: 'Manfaat Program Tahfidz Al-Qur\'an', cat: 'Religi', date: '20 Jan 2026', img: 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=1200&q=80', excerpt: 'Dampak positif hafalan Al-Qur\'an bagi kecerdasan anak.', url: 'artikel/program_tahfidz_al_qur_an.html' },
 
     // Untuk artikel yang belum ada halamannya, biarkan tanpa properti url atau kosongkan
-    { title: 'Peran Ekstrakurikuler dalam Pembentukan Karakter', cat: 'Karakter', date: '12 Jan 2026', img: 'https://storage.googleapis.com/data.ayo.co.id/photos/77445/SEO%20HDI%204/81.%20Inilah%20Ukuran%20Standar%20Lapangan%20Mini%20Soccer%20yang%20Harus%20Diketahui.jpg', excerpt: 'Ekstrakurikuler bukan sekadar kegiatan tambahan.', url: 'peran_ekskul.html' },
-    { title: 'Persiapan Ujian Nasional: Panduan Lengkap', cat: 'Akademik', date: '05 Jan 2026', img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=70', excerpt: 'Susun jadwal, kelola stres, dan tingkatkan performa.', url: 'persiapan_ujian.html' },
-    { title: 'AI di Kelas: Peluang & Tantangan', cat: 'Teknologi', date: '28 Des 2025', img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=70', excerpt: 'Bagaimana guru bijak memanfaatkan AI.', url: 'ai_dikelas.html' },
-    { title: 'Menumbuhkan Minat Baca pada Siswa', cat: 'Tips', date: '20 Des 2025', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80', excerpt: 'Trik sederhana yang bisa diterapkan di rumah.', url: 'menumbuhkan_minat_baca.html' },
-    { title: 'Public Speaking Sejak SMP', cat: 'Life Skill', date: '15 Des 2025', img: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=70', excerpt: 'Latihan simple untuk anak percaya diri berbicara.', url: 'publik_speaking.html.html' }
+    { title: 'Peran Ekstrakurikuler dalam Pembentukan Karakter', cat: 'Karakter', date: '12 Jan 2026', img: 'https://storage.googleapis.com/data.ayo.co.id/photos/77445/SEO%20HDI%204/81.%20Inilah%20Ukuran%20Standar%20Lapangan%20Mini%20Soccer%20yang%20Harus%20Diketahui.jpg', excerpt: 'Ekstrakurikuler bukan sekadar kegiatan tambahan.', url: 'artikel/peran_ekskul.html' },
+    { title: 'Persiapan Ujian Nasional', cat: 'Akademik', date: '05 Jan 2026', img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=70', excerpt: 'Susun jadwal, kelola stres, dan tingkatkan performa.', url: 'artikel/persiapan_ujian.html' },
+    { title: 'AI di Kelas', cat: 'Teknologi', date: '28 Des 2025', img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=70', excerpt: 'Bagaimana guru bijak memanfaatkan AI.', url: 'artikel/ai_dikelas.html' },
+    { title: 'Menumbuhkan Minat Baca pada Siswa', cat: 'Tips', date: '20 Des 2025', img: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=80', excerpt: 'Trik sederhana yang bisa diterapkan di rumah.', url: 'artikel/menumbuhkan_minat_baca.html' },
+    { title: 'Public Speaking Sejak SMP', cat: 'Life Skill', date: '15 Des 2025', img: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=800&q=70', excerpt: 'Latihan simple untuk anak percaya diri berbicara.', url: 'artikel/publik_speaking.html' }
   ];
 
   const perPage = 6;
@@ -611,9 +611,9 @@
     imgElement.onerror = null;
 
     if (!navigator.onLine) {
-      imgElement.src = 'https://placehold.co/800x600/1e1b4b/c7bee5.png?text=Mode%20Offline%20(Gambar%20Dimatikan)';
+      imgElement.src = 'images/Modal Gambar.png';
     } else {
-      imgElement.src = 'https://placehold.co/800x600/e2e8f0/475569.png?text=Thumbnail%20Tidak%20Tersedia';
+      imgElement.src = 'images/Modal Thumbnail.png';
     }
   };
 

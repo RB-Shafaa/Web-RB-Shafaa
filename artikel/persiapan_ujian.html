@@ -1,0 +1,1526 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persiapan Ujian Nasional: Panduan Lengkap | Shafaa Artikel</title>
+
+    <!-- Google Fonts: Poppins, Inter, Fraunces & Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Manrope:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png"
+        href="https://drive.google.com/uc?export=view&id=1B03QiOLPt6IS2A9abikEufggNzJVDxwr" />
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ==========================================
+            CSS STYLING - PERSIAPAN UJIAN NASIONAL
+            ========================================== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --color-white: #FFFFFF;
+            --color-gray-bg: #F8FAFC;
+            --color-gray-border: #E2E8F0;
+            --color-blue: #2563EB;
+            --color-blue-dark: #1E40AF;
+            --color-blue-light: #EFF6FF;
+            --color-purple: #7C3AED;
+            --color-purple-light: #F5F3FF;
+            --color-mint: #10B981;
+            --color-mint-light: #ECFDF5;
+            --color-yellow-light: #FEFCE8;
+            --color-text-main: #334155;
+            --color-text-muted: #64748B;
+
+            /* Variable Footer Shafaa Template */
+            --purple: #6C3BFF;
+            --bg-2: #F2ECFF;
+            --border: rgba(108, 59, 255, 0.14);
+            --text-2: #5A4E7A;
+            --muted: #8B84A6;
+            --surface-solid: #FFFFFF;
+            --grad-brand: linear-gradient(135deg, #6C3BFF 0%, #FF4FA3 100%);
+
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-display: 'Fraunces', ui-serif, Georgia, serif;
+
+            --radius-md: 16px;
+            --radius-lg: 24px;
+
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 10px 15px -3px rgba(37, 99, 235, 0.08), 0 4px 6px -2px rgba(37, 99, 235, 0.04);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+            --transition: all 0.3s ease;
+            --ease: cubic-bezier(.2, .7, .2, 1);
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--color-text-main);
+            background-color: var(--color-white);
+            font-size: 18px;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-heading);
+            color: var(--color-blue-dark);
+            line-height: 1.4;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--color-blue);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--color-blue-dark);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Container & Layout */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 760px) 340px;
+            gap: 60px;
+            margin-bottom: 80px;
+            align-items: start;
+        }
+
+        /* CSS Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.8s;
+        }
+
+        /* Navbar & Responsif Hamburger */
+        .navbar {
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-gray-border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand-custom {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-blue-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .navbar-brand-custom span {
+            color: var(--color-purple);
+        }
+
+        .brand-icon {
+            font-size: 1.4rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--color-text-main);
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-blue);
+        }
+
+        .btn-primary-sm {
+            background-color: var(--color-blue);
+            color: var(--color-white);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-sm);
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .btn-primary-sm:hover {
+            background-color: var(--color-blue-dark);
+            color: var(--color-white);
+            transform: translateY(-2px);
+        }
+
+        /* Tombol Hamburger */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
+            padding: 0;
+            z-index: 1002;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 100%;
+            height: 2.5px;
+            background-color: var(--color-blue-dark);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--color-gray-bg) 0%, #EFF6FF 100%);
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--color-gray-border);
+            margin-bottom: 50px;
+        }
+
+        .hero-content {
+            max-width: 860px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--color-purple);
+            color: var(--color-white);
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 50px;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .hero-title {
+            font-size: clamp(2.3rem, 4.5vw, 3.8rem);
+            font-weight: 800;
+            color: var(--color-blue-dark);
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2vw, 1.25rem);
+            color: var(--color-text-muted);
+            margin-bottom: 36px;
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .meta-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            font-size: 0.95rem;
+            color: var(--color-text-muted);
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            color: var(--color-blue-dark);
+        }
+
+        .author-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: var(--color-blue);
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .meta-dot {
+            color: #CBD5E1;
+        }
+
+        .hero-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 4px solid var(--color-white);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+        }
+
+        /* Article Content Styles */
+        .article-content {
+            width: 100%;
+        }
+
+        .lead-paragraph {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--color-blue-dark);
+            margin-bottom: 32px;
+            line-height: 1.9;
+        }
+
+        .article-content p {
+            margin-bottom: 28px;
+        }
+
+        .article-content h2 {
+            font-size: 1.8rem;
+            margin-top: 56px;
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .article-content h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--color-mint);
+            border-radius: 2px;
+        }
+
+        .article-content h3 {
+            font-size: 1.35rem;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            color: var(--color-blue);
+        }
+
+        /* Highlight Boxes */
+        .highlight-box {
+            padding: 28px 32px;
+            border-radius: var(--radius-md);
+            margin: 40px 0;
+            border-left: 6px solid;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .box-tips {
+            background-color: var(--color-blue-light);
+            border-color: var(--color-blue);
+        }
+
+        .box-title {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .box-tips .box-title {
+            color: var(--color-blue-dark);
+        }
+
+        /* Platform Grid */
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .plat-card {
+            background-color: var(--color-white);
+            border: 1px solid var(--color-gray-border);
+            padding: 28px;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+
+        .plat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-blue);
+        }
+
+        .plat-icon {
+            font-size: 2.4rem;
+            margin-bottom: 16px;
+        }
+
+        .plat-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .plat-age {
+            display: inline-block;
+            background-color: var(--color-purple-light);
+            color: var(--color-purple);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 12px;
+        }
+
+        .plat-card p {
+            font-size: 0.92rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0;
+        }
+
+        /* Project Showcase */
+        .project-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .proj-item {
+            background: linear-gradient(135deg, var(--color-gray-bg) 0%, var(--color-blue-light) 100%);
+            border: 1px solid var(--color-gray-border);
+            padding: 24px;
+            border-radius: var(--radius-md);
+        }
+
+        .proj-item h5 {
+            font-family: var(--font-heading);
+            color: var(--color-blue-dark);
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .proj-item p {
+            font-size: 0.92rem;
+            color: var(--color-text-muted);
+            margin-bottom: 0;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            margin: 60px 0;
+            padding: 50px 30px;
+            background: linear-gradient(135deg, var(--color-blue-dark) 0%, var(--color-purple) 100%);
+            border-radius: var(--radius-lg);
+            color: var(--color-white);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .quote-icon-symbol {
+            font-family: Georgia, serif;
+            font-size: 5rem;
+            line-height: 0;
+            color: var(--color-mint);
+            opacity: 0.5;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .quote-text {
+            font-family: var(--font-heading);
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            font-weight: 500;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            color: var(--color-white);
+            font-style: italic;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            color: #E2E8F0;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        /* Visual Checklist */
+        .checklist {
+            list-style: none;
+            margin: 40px 0;
+            background-color: var(--color-white);
+            border: 1px solid var(--color-gray-border);
+            border-radius: var(--radius-md);
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .checklist li {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            color: var(--color-text-main);
+            display: flex;
+            align-items: center;
+        }
+
+        .checklist li:last-child {
+            margin-bottom: 0;
+        }
+
+        .checklist li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            background-color: var(--color-blue-light);
+            color: var(--color-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Timeline CSS */
+        .timeline {
+            margin: 50px 0;
+            position: relative;
+            padding-left: 30px;
+            border-left: 3px solid var(--color-blue-light);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -38px;
+            top: 0;
+            width: 14px;
+            height: 14px;
+            background-color: var(--color-blue);
+            border: 4px solid var(--color-white);
+            border-radius: 50%;
+            box-shadow: 0 0 0 2px var(--color-blue-light);
+        }
+
+        .timeline-content {
+            background-color: var(--color-gray-bg);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-gray-border);
+        }
+
+        .timeline-tag {
+            display: inline-block;
+            background-color: var(--color-mint-light);
+            color: var(--color-mint);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 12px;
+            font-family: var(--font-heading);
+            text-transform: uppercase;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--color-blue-dark);
+        }
+
+        .timeline-content p {
+            margin-bottom: 0;
+            font-size: 1rem;
+            color: var(--color-text-muted);
+        }
+
+        /* Call To Action */
+        .cta-section {
+            background: linear-gradient(135deg, var(--color-blue) 0%, var(--color-purple) 100%);
+            color: var(--color-white);
+            padding: 60px 40px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-top: 60px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .cta-section h2 {
+            margin-top: 0;
+            font-size: 2rem;
+            color: var(--color-white);
+        }
+
+        .cta-section h2::after {
+            display: none;
+        }
+
+        .cta-section p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--color-mint);
+            color: var(--color-white);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 16px 36px;
+            border-radius: 50px;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: #059669;
+            color: var(--color-white);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Sidebar - Sticky */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .widget {
+            background-color: var(--color-white);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            margin-bottom: 30px;
+            border: 1px solid var(--color-gray-border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .widget-title {
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+            color: var(--color-blue-dark);
+            border-bottom: 2px solid var(--color-gray-bg);
+            padding-bottom: 12px;
+        }
+
+        .related-list {
+            list-style: none;
+        }
+
+        .related-list li {
+            margin-bottom: 20px;
+        }
+
+        .related-list li:last-child {
+            margin-bottom: 0;
+        }
+
+        .related-list a {
+            display: block;
+            color: var(--color-text-main);
+            font-weight: 600;
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 6px;
+            font-family: var(--font-heading);
+        }
+
+        .related-list a:hover {
+            color: var(--color-blue);
+        }
+
+        .widget-highlight {
+            background: linear-gradient(135deg, var(--color-blue-light) 0%, #DBEAFE 100%);
+            border-color: #BFDBFE;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background-color: var(--color-gray-bg);
+            border: 1px solid var(--color-gray-border);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--color-text-muted);
+            text-decoration: none;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .tag:hover {
+            border-color: var(--color-blue);
+            color: var(--color-blue);
+            background-color: var(--color-blue-light);
+        }
+
+        /* ==========================================
+            STYLING FOOTER SHAFAA (PLEK KETIPLEK)
+            ========================================== */
+        .footer {
+            padding: 80px 0 30px;
+            background: var(--bg-2);
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+        }
+
+        .footer__grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1.5fr 1.5fr;
+            gap: 48px;
+            margin-bottom: 60px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand__logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background-color: transparent;
+            padding: 4px;
+            box-shadow: var(--shadow-sm);
+            object-fit: contain;
+        }
+
+        .brand__text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .brand__name {
+            font-family: var(--font-display);
+            font-weight: 900;
+            font-size: 1.05rem;
+            letter-spacing: -0.02em;
+            color: var(--color-text-main);
+        }
+
+        .brand__sub {
+            font-size: .78rem;
+            color: var(--purple);
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .footer h4 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+            color: var(--color-text-main);
+        }
+
+        .foot-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .foot-list li {
+            padding: 6px 0;
+            color: var(--text-2);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .foot-list a {
+            color: var(--text-2);
+            text-decoration: none;
+        }
+
+        .foot-list a:hover {
+            color: var(--purple);
+            padding-left: 3px;
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: 15px;
+        }
+
+        .socials {
+            display: flex;
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        .soc {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            background: var(--surface-solid);
+            border: 1px solid var(--border);
+            font-weight: 700;
+            font-size: .82rem;
+            transition: all .3s var(--ease);
+            color: var(--color-text-main);
+        }
+
+        .soc:hover {
+            background: var(--grad-brand);
+            color: #fff;
+            transform: translateY(-3px);
+            border: none;
+        }
+
+        .footer__bottom {
+            padding-top: 30px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsiveness & Media Queries */
+        @media (max-width: 1024px) {
+            .footer__grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .sidebar {
+                position: static;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .footer__bottom {
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex !important;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(12px);
+                flex-direction: column;
+                align-items: center;
+                padding: 24px 0;
+                gap: 20px;
+                border-bottom: 1px solid var(--color-gray-border);
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+
+                opacity: 0;
+                visibility: hidden;
+                transform: translateY(-10px);
+                transition: all 0.3s ease;
+            }
+
+            .nav-links.is-active {
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: translateY(0) !important;
+            }
+
+            .nav-toggle.is-active span:nth-child(1) {
+                transform: translateY(8.75px) rotate(45deg);
+            }
+
+            .nav-toggle.is-active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-toggle.is-active span:nth-child(3) {
+                transform: translateY(-8.75px) rotate(-45deg);
+            }
+
+            .hero {
+                padding: 50px 0 40px;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-image img {
+                height: 300px;
+            }
+
+            .cta-section {
+                padding: 40px 24px;
+            }
+        }
+
+        /* ==========================================
+    CSS STYLING - POPUP MODAL PILIHAN
+    ========================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(26, 19, 48, 0.6);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s cubic-bezier(.2, .7, .2, 1);
+        }
+
+        .modal-overlay.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card {
+            background: var(--surface-solid, #FFFFFF);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg, 28px);
+            padding: 36px;
+            width: 90%;
+            max-width: 440px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.35s cubic-bezier(.2, .7, .2, 1);
+            position: relative;
+        }
+
+        .modal-overlay.is-open .modal-card {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--bg-2);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 1rem;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            color: var(--text-2);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--purple);
+            color: var(--white);
+        }
+
+        .modal-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .modal-title {
+            font-family: var(--font-heading);
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .modal-desc {
+            font-size: 0.95rem;
+            color: var(--text-2);
+            margin-bottom: 24px;
+        }
+
+        .modal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .modal-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 20px;
+            border-radius: var(--radius-md, 16px);
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .modal-btn:hover {
+            background: var(--grad-soft);
+            border-color: var(--purple);
+            color: var(--purple);
+            transform: translateY(-2px);
+        }
+
+        .modal-btn span i {
+            color: var(--muted);
+            transition: var(--transition);
+        }
+
+        .modal-btn:hover span i {
+            color: var(--purple);
+            transform: translateX(3px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="navbar-brand-custom">
+                <span class="brand-icon">
+                    <img src="https://drive.google.com/thumbnail?id=1B03QiOLPt6IS2A9abikEufggNzJVDxwr&sz=w200"
+                        alt="Logo Rumah Belajar Shafaa" class="brand__logo" loading="eager"
+                        onerror="this.style.display='none'" />
+                </span>Artikel<span>Shafaa</span>
+            </a>
+
+            <!-- Tombol Hamburger -->
+            <button class="nav-toggle" id="navToggle" aria-label="Buka Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Nav Links -->
+            <div class="nav-links" id="navLinks">
+                <a href="../index.html#blog">Beranda</a>
+                <a href="#artikel">Artikel</a>
+                <a href="#kategori">Kategori</a>
+                <a href="#kontak">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="badge fade-in-up">Akademik & Ujian</div>
+            <h1 class="hero-title fade-in-up delay-1">Persiapan Ujian Nasional: Panduan Lengkap</h1>
+            <p class="hero-subtitle fade-in-up delay-2">
+                Menghadapi Ujian Nasional bukan hanya soal menghafal, tapi juga butuh strategi, kesiapan mental, dan
+                manajemen waktu yang tepat. Simak panduan komprehensifnya di sini!
+            </p>
+
+            <div class="meta-info fade-in-up delay-3">
+                <div class="author">
+                    <div class="author-avatar">A</div>
+                    <span>Admin</span>
+                </div>
+                <span class="meta-dot">•</span>
+                <span>22 Agustus 2026</span>
+                <span class="meta-dot">•</span>
+                <span>⏱️ 5–7 Menit Baca</span>
+            </div>
+
+            <div class="hero-image fade-in-up delay-3">
+                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=80"
+                    alt="Siswa belajar mempersiapkan ujian">
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Layout -->
+    <div class="container main-layout">
+
+        <!-- Article Content -->
+        <main class="article-content">
+            <article>
+
+                <!-- Pendahuluan -->
+                <p class="lead-paragraph">
+                    Menjelang Ujian Nasional atau ujian kelulusan, rasa cemas dan tegang sering kali melanda para siswa.
+                    Namun, dengan persiapan yang matang dan terstruktur, ujian bukanlah momok yang menakutkan, melainkan
+                    panggung pembuktian atas hasil belajar selama ini.
+                </p>
+                <p>
+                    Kunci utama dari keberhasilan ujian terletak pada seberapa konsisten dan efektif metode belajar yang
+                    digunakan. Artikel ini akan memandu Anda menyusun strategi jitu—mulai dari teknis belajar hingga
+                    menjaga kondisi mental—agar tampil maksimal di hari H.
+                </p>
+
+                <!-- Pembahasan 1 -->
+                <h2>1. Susun Jadwal Belajar Terpadu</h2>
+                <p>
+                    Setiap materi butuh waktu untuk diserap ke dalam memori jangka panjang. Jangan gunakan Sistem Kebut
+                    Semalam (SKS). Petakan bab-bab yang akan keluar sesuai kisi-kisi dan cicil materi tersebut setiap
+                    harinya dengan durasi yang proporsional.
+                </p>
+                <div class="highlight-box box-tips">
+                    <div class="box-title">💡 Tips Praktis</div>
+                    <p>Fokuslah pada konsep dasar, bukan sekadar menghafal rumus. Pemahaman konsep akan sangat membantu
+                        Anda menjawab bentuk soal apa pun, sesulit apa pun variasi pertanyaannya.</p>
+                </div>
+
+                <!-- Pembahasan 2 -->
+                <h2>2. Manfaatkan Evaluasi Berkala</h2>
+                <p>
+                    Untuk mengukur sejauh mana pemahaman materi yang sudah dipelajari, Anda wajib memperbanyak latihan
+                    soal dan mengikuti uji coba (tryout) secara rutin:
+                </p>
+
+                <div class="platform-grid">
+                    <div class="plat-card">
+                        <div class="plat-icon">📝</div>
+                        <h4>Simulasi Tryout</h4>
+                        <span class="plat-age">Uji Kemampuan</span>
+                        <p>Mengikuti tryout berbasis CBT untuk membiasakan diri dengan format dan batas waktu ujian
+                            asli.</p>
+                    </div>
+                    <div class="plat-card">
+                        <div class="plat-icon">📚</div>
+                        <h4>Bank Soal</h4>
+                        <span class="plat-age">Evaluasi Harian</span>
+                        <p>Mengerjakan bank soal tahun-tahun sebelumnya untuk membaca pola pertanyaan yang sering
+                            muncul.</p>
+                    </div>
+                </div>
+
+                <!-- Pembahasan 3 -->
+                <h2>3. Jaga Keseimbangan Fisik dan Mental</h2>
+                <p>
+                    Otak yang lelah tidak akan bisa memproses informasi dengan optimal. Selalu sediakan waktu untuk
+                    memulihkan energi sebelum melanjutkan rutinitas belajar.
+                </p>
+
+                <div class="project-showcase">
+                    <div class="proj-item">
+                        <h5>🧘‍♂️ Manajemen Stres</h5>
+                        <p>Luangkan waktu untuk relaksasi, menjalankan hobi sejenak, atau sekadar jalan santai agar otak
+                            terhindar dari kondisi burnout.</p>
+                    </div>
+                    <div class="proj-item">
+                        <h5>🍎 Nutrisi Otak</h5>
+                        <p>Perbanyak asupan makanan bergizi, minum air putih yang cukup, dan pastikan pola tidur selalu
+                            terjaga 7-8 jam di malam hari.</p>
+                    </div>
+                </div>
+
+                <!-- Quote Section -->
+                <section class="quote-section">
+                    <span class="quote-icon-symbol">"</span>
+                    <blockquote class="quote-text">
+                        Sukses adalah bertemunya persiapan yang matang dengan kesempatan yang datang.
+                    </blockquote>
+                    <span class="quote-author">— Motivator Pendidikan</span>
+                </section>
+
+                <!-- Checklist -->
+                <h2>Checklist Persiapan H-1 Ujian</h2>
+                <p>Pastikan hal-hal teknis berikut sudah 100% siap di malam sebelum Anda menghadapi ujian:</p>
+                <ul class="checklist">
+                    <li>Kartu tanda peserta ujian dan identitas diri sudah masuk di dalam tas</li>
+                    <li>Alat tulis lengkap (Pensil 2B, penghapus, rautan, atau pulpen sesuai aturan)</li>
+                    <li>Pakaian seragam disiapkan dalam kondisi bersih dan rapi</li>
+                    <li>Berhenti belajar berat setelah jam 8 malam untuk merilekskan otak</li>
+                    <li>Berdoa dan meminta restu kepada orang tua sebelum beristirahat</li>
+                </ul>
+
+                <!-- Timeline Visual -->
+                <h2>Timeline Persiapan Menjelang Hari H</h2>
+                <p>Panduan langkah demi langkah menyusun jadwal belajar di bulan terakhir sebelum ujian:</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-tag">Minggu 1</span>
+                            <h4>Review Materi Dasar & Kisi-kisi</h4>
+                            <p>Fokus membedah kisi-kisi ujian terbaru dan mengulangi teori dasar yang masih menjadi
+                                kelemahan Anda.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-tag">Minggu 2</span>
+                            <h4>Latihan Soal Intensif</h4>
+                            <p>Memperbanyak jam terbang dengan mengerjakan berbagai model dan variasi soal dari tahun ke
+                                tahun.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-tag">Minggu 3</span>
+                            <h4>Evaluasi Tryout</h4>
+                            <p>Menganalisis kesalahan pada simulasi tryout untuk mengetahui materi mana yang masih butuh
+                                perbaikan cepat.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-tag">Minggu 4</span>
+                            <h4>Tapering & Relaksasi</h4>
+                            <p>Kurangi porsi belajar materi baru yang berat, perbanyak doa, afirmasi positif, dan
+                                menjaga stamina fisik.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="cta-section">
+                    <h2>Mulai Persiapan Anda Hari Ini!</h2>
+                    <p>
+                        Jangan tunda lagi. Sukses di Ujian Nasional dimulai dari langkah konsisten yang Anda bangun
+                        sejak saat ini.
+                    </p>
+                    <a href="#" id="openModalBtn" class="btn">Bergabung ke Program Persiapan</a>
+                </div>
+
+            </article>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="widget widget-highlight">
+                <h3 class="widget-title">Strategi Sukses</h3>
+                <p style="font-size: 0.95rem; color: var(--color-blue-dark); font-weight: 500; margin-bottom: 0;">
+                    "Kunci keberhasilan ujian bukan sekadar kecerdasan, melainkan ketenangan mental dan kedisiplinan
+                    eksekusi jadwal belajar."
+                </p>
+            </div>
+
+            <div class="widget">
+                <h3 class="widget-title" id="artikel">Artikel Lainnya</h3>
+                <ul class="related-list">
+                    <li>
+                        <a href="adab_di_sekolah.html">Menanamkan Adab Sejak Dini di Sekolah</a>
+                        <span style="font-size: 0.85rem; color: var(--color-text-muted);">5 Menit Baca</span>
+                    </li>
+                    <li>
+                        <a href="tips_belajar_digital.html">5 Tips Belajar Efektif untuk Siswa Digital</a>
+                        <span style="font-size: 0.85rem; color: var(--color-text-muted);">5 Menit Baca</span>
+                    </li>
+                    <li>
+                        <a href="ai_dikelas.html">AI di Kelas: Peluang & Tantangan Pembelajaran Modern</a>
+                        <span style="font-size: 0.85rem; color: var(--color-text-muted);">6 Menit Baca</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <h3 class="widget-title">Tips Belajar Cepat</h3>
+                <p style="font-size: 0.95rem; color: var(--color-text-muted); margin-bottom: 0;">
+                    Pahami alur dan logika dari setiap materi yang dipelajari. Menggunakan teknik Pomodoro (25 menit
+                    belajar, 5 menit istirahat) sangat efektif menjaga konsentrasi.
+                </p>
+            </div>
+
+            <div class="widget">
+                <h3 class="widget-title" id="kategori">Kategori Artikel</h3>
+                <div class="tags">
+                    <a class="tag">#UjianNasional</a>
+                    <a class="tag">#TipsBelajar</a>
+                    <a class="tag">#Tryout</a>
+                    <a class="tag">#SuksesUjian</a>
+                    <a class="tag">#Motivasi</a>
+                </div>
+            </div>
+
+        </aside>
+
+    </div>
+
+    <!-- ============ FOOTER (PLEK KETIPLEK TEMPLATE SHAFAA) ============ -->
+    <footer class="footer" role="contentinfo">
+        <div class="container footer__grid">
+            <div>
+                <a href="../index.html#home" class="brand">
+                    <img src="https://drive.google.com/thumbnail?id=1B03QiOLPt6IS2A9abikEufggNzJVDxwr&sz=w200"
+                        alt="Logo" class="brand__logo" onerror="this.style.display='none'" />
+                    <span class="brand__text">
+                        <span class="brand__name">Rumah Belajar</span>
+                        <span class="brand__sub">Shafaa</span>
+                    </span>
+                </a>
+                <p class="muted">Menumbuhkan generasi Sholeh, Cerdas & Intelek dengan pendidikan modern & karakter
+                    Islami.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul class="foot-list">
+                    <li><a href="../index.html#profil">Profil</a></li>
+                    <li><a href="../index.html#akademik">Akademik</a></li>
+                    <li><a href="../index.html#ppdb">PPDB</a></li>
+                    <li><a href="../index.html#galeri">Galeri</a></li>
+                    <li><a href="../index.html#blog">Blog</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 id="kontak">Kontak</h4>
+                <ul class="foot-list">
+                    <li>Jl. Raya Cimanglid, Kab. Bogor</li>
+                    <li>(+62) 822-6018-9434</li>
+                    <li>rbshafaa@gmail.com</li>
+                </ul>
+            </div>
+            <div>
+                <h4>Ikuti Kami</h4>
+                <div class="socials">
+                    <a href="https://www.instagram.com/rb.shafaa/" target="_blank" rel="noopener noreferrer"
+                        class="soc instagram" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="https://web.facebook.com/people/Rumah-Belajar-Shafaa/pfbid02HheGGA8yZc5WnS9Ceqhq5Ugh5EXUGLt9u8iUpSdYHURtkqnuAYmw554DKH2t5Zsdl/?sk=about&locale=id_ID"
+                        target="_blank" rel="noopener noreferrer" class="soc facebook" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@rumahbelajarshafaa" target="_blank" rel="noopener noreferrer"
+                        class="soc youtube" aria-label="YouTube">
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@rb.shafaa/" target="_blank" rel="noopener noreferrer"
+                        class="soc tiktok" aria-label="TikTok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                    <a href="https://wa.me/6282260189434" target="_blank" rel="noopener noreferrer" class="soc whatsapp"
+                        aria-label="WhatsApp">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__bottom">
+            <p>© <span id="year"></span> Rumah Belajar Shafaa. Sholeh, Cerdas & Intelek.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Isi Tahun Otomatis di Footer
+        const yearSpan = document.getElementById('year');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+
+        // Toggle Mobile Navigation
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                navToggle.classList.toggle('is-active');
+                navLinks.classList.toggle('is-active');
+            });
+
+            const links = navLinks.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    navToggle.classList.remove('is-active');
+                    navLinks.classList.remove('is-active');
+                });
+            });
+        }
+
+        // Menggunakan event listener yang aman saat seluruh halaman selesai dimuat
+        document.addEventListener("DOMContentLoaded", function () {
+            const openModalBtn = document.getElementById('openModalBtn');
+            const platformModal = document.getElementById('platformModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+
+            if (openModalBtn && platformModal) {
+                // Buka Modal
+                openModalBtn.addEventListener('click', function (e) {
+                    e.preventDefault(); // Mencegah link kosong melompat ke atas
+                    platformModal.classList.add('is-open');
+                });
+
+                // Tutup Modal lewat tombol X
+                if (closeModalBtn) {
+                    closeModalBtn.addEventListener('click', function () {
+                        platformModal.classList.remove('is-open');
+                    });
+                }
+
+                // Tutup Modal jika klik di luar kotak putih
+                platformModal.addEventListener('click', function (e) {
+                    if (e.target === platformModal) {
+                        platformModal.classList.remove('is-open');
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- Modal Popup Pilihan Platform -->
+    <div class="modal-overlay" id="platformModal">
+        <div class="modal-card">
+            <button class="modal-close" id="closeModalBtn" aria-label="Tutup">&times;</button>
+            <div class="modal-icon">🎓</div>
+            <h3 class="modal-title">Pilih Program Persiapan</h3>
+            <p class="modal-desc">Temukan fasilitas dukungan belajar terbaik untuk mencapai target kelulusan Anda.</p>
+
+            <div class="modal-options">
+                <a href="https://www.tryoutnasional.id/" target="_blank" rel="noopener noreferrer" class="modal-btn">
+                    <span>📝 Daftar Tryout Nasional</span>
+                    <span><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+                <a href="https://wa.me/6282260189434" target="_blank" rel="noopener noreferrer" class="modal-btn">
+                    <span>💬 Konsultasi Jadwal Belajar</span>
+                    <span><i class="fa-solid fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

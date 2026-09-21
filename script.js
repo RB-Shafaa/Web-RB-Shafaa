@@ -169,12 +169,57 @@
     }
   }
   type();
+  /* ---------- Gambar Awal ----------*/
+  document.addEventListener("DOMContentLoaded", () => {
+    const offlineImageSrc = 'images/Modal Gambar Tidak Tersedia.png';
 
+    // Ambil semua gambar yang memiliki kelas 'check-offline'
+    const images = document.querySelectorAll('img.check-offline');
+
+    images.forEach(img => {
+      // 1. Cek langsung saat halaman dimuat (jika status awal sudah offline)
+      if (!navigator.onLine) {
+        img.src = offlineImageSrc;
+      }
+
+      // 2. Fallback otomatis jika gagal memuat (karena offline, internet putus, atau URL error)
+      img.onerror = function () {
+        this.onerror = null; // Mencegah infinite loop jika gambar fallback gagal
+        this.src = offlineImageSrc;
+      };
+    });
+  });
   /* ---------- Slider ---------- */
-  const track = $('#sliderTrack');
-  const slides = $$('.slide', track);
+  const track = $('#sliderTrack'); const slides = $$('.slide', track);
   const dotsWrap = $('#sliderDots');
   let idx = 0;
+  const offlineImageSrc = 'images/Modal Gambar Tidak Tersedia.png';
+
+  // Fungsi untuk memuat gambar slide dengan proteksi offline & error handling
+  function updateSlideImages() {
+    slides.forEach(slide => {
+      const img = slide.querySelector('img.check-offline');
+      if (img) {
+        // Simpan sumber asli di atribut data jika belum ada
+        if (!img.dataset.src && !img.src.includes('Modal Gambar Tidak Tersedia.png')) {
+          img.dataset.src = img.src;
+        }
+
+        if (!navigator.onLine) {
+          img.src = offlineImageSrc;
+        } else if (img.dataset.src) {
+          img.src = img.dataset.src;
+        }
+
+        // Fallback jika gagal load saat online
+        img.onerror = function () {
+          this.onerror = null;
+          this.src = offlineImageSrc;
+        };
+      }
+    });
+  }
+
   slides.forEach((_, i) => {
     const b = document.createElement('button');
     b.setAttribute('aria-label', 'Slide ' + (i + 1));
@@ -182,16 +227,26 @@
     on(b, 'click', () => go(i));
     dotsWrap.appendChild(b);
   });
+
   function go(i) {
     idx = (i + slides.length) % slides.length;
     track.style.transform = `translateX(-${idx * 100}%)`;
     $$('#sliderDots button').forEach((d, di) => d.classList.toggle('is-active', di === idx));
+
+    // Periksa status gambar setiap kali slide digeser/berpindah
+    updateSlideImages();
   }
+
   on($('#prevSlide'), 'click', () => go(idx - 1));
   on($('#nextSlide'), 'click', () => go(idx + 1));
+
   let slideTimer = setInterval(() => go(idx + 1), 5000);
+
   $('#slider')?.addEventListener('mouseenter', () => clearInterval(slideTimer));
   $('#slider')?.addEventListener('mouseleave', () => slideTimer = setInterval(() => go(idx + 1), 5000));
+
+  // Jalankan sekali saat pertama kali halaman dimuat
+  updateSlideImages();
 
   /* ---------- Teachers data ---------- */
   /*const teachers = [
@@ -504,30 +559,96 @@
     $(`.tab-panel[data-panel="${t.dataset.tab}"]`).classList.add('is-active');
   }));
 
-  /* ---------- PPDB Form ---------- */
-  const ppdb = $('#ppdbForm');
+  /* ---------- Contact Form (Metode Fetch API Handal) ---------- */
+  const contactForm = $('#contactForm');
 
-  on(ppdb, 'submit', (e) => {
-    e.preventDefault();
-    const fields = ppdb.querySelectorAll('input,select,textarea');
+  on(contactForm, 'submit', async (e) => {
+    e.preventDefault(); // Cegah reload bawaan form
+
+    const fields = contactForm.querySelectorAll('input, textarea');
     let ok = true;
 
     fields.forEach(f => {
-      // Mengecualikan validasi untuk NISN jika kosong.
-      // Pastikan 'id' atau 'name' pada tag HTML input NISN Anda adalah "nisn"
-      if ((f.id === 'nisn' || f.name === 'nisn' || f.name === 'NISN') && f.value.trim() === '') {
-        f.style.borderColor = ''; // Reset border
-        return; // Lanjut ke field berikutnya tanpa memberikan error
+      if (!f.checkValidity()) {
+        f.style.borderColor = '#ef4444';
+        ok = false;
+      } else {
+        f.style.borderColor = '';
       }
+    });
 
-      if ((f.id === 'asal' || f.name === 'asal' || f.name === 'ASAL') && f.value.trim() === '') {
-        f.style.borderColor = ''; // Reset border
-        return; // Lanjut ke field berikutnya tanpa memberikan error
+    if (!ok) {
+      toast('Mohon lengkapi semua kolom dengan benar', 'error');
+      return;
+    }
+
+    // Ambil tombol submit
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const originalText = submitBtn.innerHTML;
+
+    // Ubah tombol jadi loading
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim Pesan...';
+    toast('Mengirim pesan...', 'success');
+
+    try {
+      // Kirim data menggunakan fetch ke Formspree
+      const formData = new FormData(contactForm);
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        // BERHASIL: Kosongkan form, kembalikan tombol, munculkan toast sukses
+        contactForm.reset();
+        toast('Pesan berhasil dikirim! Terima kasih atas masukan Anda.', 'success');
+      } else {
+        // Gagal dari server Formspree
+        toast('Gagal mengirim pesan. Silakan coba lagi.', 'error');
       }
+    } catch (error) {
+      // Gagal jaringan / koneksi
+      toast('Terjadi kesalahan jaringan. Periksa koneksi Anda.', 'error');
+    } finally {
+      // Pastikan tombol selalu kembali normal (tidak stuck di loading)
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+    }
+  });
 
-      if ((f.id === 'email' || f.name === 'email' || f.name === 'EMAIL') && f.value.trim() === '') {
-        f.style.borderColor = ''; // Reset border
-        return; // Lanjut ke field berikutnya tanpa memberikan error
+  /* ---------- PPDB Form (Dengan Loading, Reset & Stepper Aktif) ---------- */
+  const ppdb = $('#ppdbForm');
+  let isSubmitting = false;
+
+  // Ambil elemen stepper
+  const steps = $$('.stepper .step');
+
+  function updateStepper(currentStep) {
+    steps.forEach((step, index) => {
+      if (index < currentStep) {
+        step.classList.add('is-active');
+      } else {
+        step.classList.remove('is-active');
+      }
+    });
+  }
+
+  // Inisialisasi awal stepper di tahap 1
+  updateStepper(1);
+
+  on(ppdb, 'submit', (e) => {
+    const fields = ppdb.querySelectorAll('input, select, textarea');
+    let ok = true;
+
+    fields.forEach(f => {
+      // Pengecualian field opsional
+      if ((['nisn', 'asal', 'email'].includes(f.id || f.name)) && f.value.trim() === '') {
+        f.style.borderColor = '';
+        return;
       }
 
       if (!f.checkValidity()) {
@@ -538,46 +659,57 @@
       }
     });
 
-    if (!ok) return toast('Mohon lengkapi semua data dengan benar', 'error');
+    if (!ok) {
+      e.preventDefault();
+      toast('Mohon lengkapi semua data dengan benar', 'error');
+      return;
+    }
 
-    // Update stepper visual
-    $$('.step').forEach((s, i) => s.classList.toggle('is-active', i < 4));
-    toast('Pendaftaran berhasil dikirim!', 'success');
-    setTimeout(() => openModal('Terima kasih!', 'Data pendaftaran Anda telah kami terima. Tim PPDB akan menghubungi via email dalam 1x24 jam kerja.'), 400);
-    ppdb.reset();
+    // Lolos validasi: Ubah tombol jadi animasi loading
+    isSubmitting = true;
+    const submitBtn = ppdb.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.dataset.originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim Pendaftaran...';
+    }
+
+    toast('Mengirim pendaftaran ke server...', 'success');
   });
+
+  // Fungsi global yang dipanggil saat iframe selesai menerima respons dari Formspree
+  window.handleFormSubmitted = function () {
+    if (!isSubmitting) return;
+
+    isSubmitting = false;
+    const submitBtn = ppdb.querySelector('button[type="submit"]');
+
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = submitBtn.dataset.originalText || 'Kirim Pendaftaran';
+    }
+
+    // 1. Buat semua step stepper jadi aktif (menyala penuh) menandakan selesai
+    updateStepper(steps.length);
+
+    // 2. Kosongkan form otomatis & Beri notifikasi sukses
+    ppdb.reset();
+    toast('Pendaftaran berhasil dikirim! Data telah diterima.', 'success');
+  };
 
   on($('#downloadBrosur'), 'click', (e) => {
     e.preventDefault();
-    const content = `RUMAH BELAJAR SHAFAA\nBrosur PPDB 2027/2028\n\nSholeh, Cerdas & Intelek\n\nAlamat: Jl. Raya Cimanglid, Kab. Bogor\nTelp: (+62) 822-6018-9434\nEmail: rbshafaa@gmail.com\n\nGelombang 1: 1 Maret - 30 April 2027\nGelombang 2: 1 Mei - 30 Juni 2027`;
-    const blob = new Blob([content], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
+
     const a = document.createElement('a');
-    a.href = url; a.download = 'brosur-ppdb-shafaa.txt'; a.click();
-    URL.revokeObjectURL(url);
+    a.href = 'images/Brosur.pdf';
+    a.download = 'Brosur-PPDB-Shafaa.pdf';
+
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
     toast('Brosur berhasil diunduh', 'success');
   });
-
-  /* ---------- Stepper Logic ---------- */
-  // Mengambil semua elemen step di dalam stepper
-  const steps = $$('.stepper .step');
-
-  // Fungsi untuk memperbarui tampilan stepper
-  // Parameter 'currentStep' adalah angka tahap saat ini (1, 2, 3, atau 4)
-  function updateStepper(currentStep) {
-    steps.forEach((step, index) => {
-      // index dimulai dari 0 (0 = Step 1, 1 = Step 2, dst)
-      if (index < currentStep) {
-        // Jika step ini lebih kecil atau sama dengan tahap saat ini, jadikan aktif
-        step.classList.add('is-active');
-      } else {
-        // Jika step ini di atas tahap saat ini, matikan class aktif
-        step.classList.remove('is-active');
-      }
-    });
-  }
-
-  updateStepper(1);
 
   /* ---------- Contact Form ---------- */
   on($('#contactForm'), 'submit', (e) => {
@@ -588,13 +720,49 @@
     f.reset();
   });
 
-  /* ---------- Newsletter ---------- */
-  on($('#newsForm'), 'submit', (e) => {
-    e.preventDefault();
-    if (!e.target.checkValidity()) return toast('Email tidak valid', 'error');
-    toast('Berhasil berlangganan newsletter Shafaa!', 'success');
-    e.target.reset();
+  /* ---------- Newsletter Form ---------- */
+  const newsForm = $('#newsForm');
+  let isNewsSubmitting = false;
+
+  on(newsForm, 'submit', (e) => {
+    const emailInput = newsForm.querySelector('input[type="email"]');
+
+    // Validasi email
+    if (!emailInput.checkValidity()) {
+      e.preventDefault();
+      return toast('Email tidak valid', 'error');
+    }
+
+    // Lolos validasi: Aktifkan status kirim dan ubah tombol jadi loading
+    isNewsSubmitting = true;
+    const submitBtn = newsForm.querySelector('button[type="submit"]');
+
+    if (submitBtn) {
+      submitBtn.dataset.originalText = submitBtn.innerHTML;
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
+    }
+
+    toast('Mengirim langganan...', 'success');
   });
+
+  // Fungsi global yang dipanggil otomatis saat iframe selesai menerima respons dari Formspree
+  window.handleNewsSubmitted = function () {
+    if (!isNewsSubmitting) return; // Mencegah eksekusi saat pertama kali halaman dimuat
+
+    isNewsSubmitting = false;
+    const submitBtn = newsForm.querySelector('button[type="submit"]');
+
+    // Kembalikan tombol ke teks semula
+    if (submitBtn) {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = submitBtn.dataset.originalText || 'Berlangganan';
+    }
+
+    // Kosongkan kolom input email otomatis & beri notifikasi sukses
+    newsForm.reset();
+    toast('Email berhasil dikirim! Terima kasih telah berlangganan.', 'success');
+  };
 
   /* ---------- Toast ---------- */
   const toastEl = $('#toast');

@@ -12,7 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png"
-        href="https://drive.google.com/uc?export=view&id=1B03QiOLPt6IS2A9abikEufggNzJVDxwr" />
+        href="../rb-shafaa/favicon-96x96.png" />
 
     <!-- (CSS di sini tetap sama dengan kode sebelumnya yang sudah saya buatkan) -->
     <style>
@@ -1112,6 +1112,33 @@
         .modal-btn:hover span i {
             color: var(--purple);
             transform: translateX(3px);
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+                padding: 0;
+            }
+
+            .article-container {
+                box-shadow: none !important;
+                padding: 0 !important;
+            }
+
+            /* Sembunyikan tombol, navigasi, atau elemen yang tidak perlu dicetak */
+            header,
+            footer,
+            nav,
+            .no-print {
+                display: none !important;
+            }
+
+            /* Pastikan teks tetap kontras dan jelas */
+            a {
+                text-decoration: none;
+                color: black;
+            }
         }
     </style>
 </head>

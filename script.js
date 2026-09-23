@@ -312,17 +312,19 @@
   /* ---------- Gallery Data ---------- */
   const galleryImages = [
     { cat: 'Kegiatan', src: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=70' },
+    { cat: 'Wisuda', src: 'https://lh3.googleusercontent.com/d/11bg5o_Q_Wge-_I7xl9c7s04B7HoOkWjp' },
     { cat: 'Upacara', src: 'https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=800&q=70' },
-    { cat: 'Wisuda', src: 'https://images.unsplash.com/photo-1627556704290-2b1f5853ff78?auto=format&fit=crop&w=800&q=70' },
     { cat: 'Ekstrakurikuler', src: 'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=800&q=70' },
+    { cat: 'Wisuda', src: 'https://lh3.googleusercontent.com/d/15cEVBAbmAIHUaj7jjUEQ1V63LogGYb4D' },
     { cat: 'Kegiatan', src: 'https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=70' },
     { cat: 'Lomba', src: 'https://images.unsplash.com/photo-1607988795691-3d0147b43231?auto=format&fit=crop&w=800&q=70' },
-    { cat: 'Kegiatan', src: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=70' },
+    { cat: 'Kegiatan', src: 'https://lh3.googleusercontent.com/d/1MvK9iWtnzLad2C4ttUev-QzkrrgGhebu' },
+    { cat: 'Wisuda', src: 'https://lh3.googleusercontent.com/d/1rO-8Ns8UpE-49lsnZPbtcqubxHbkIaf4' },
     { cat: 'Ekstrakurikuler', src: 'https://images.unsplash.com/photo-1511632765486-a53c4337b587?auto=format&fit=crop&w=800&q=70' },
-    { cat: 'Wisuda', src: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=70' },
     { cat: 'Upacara', src: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=70' },
     { cat: 'Lomba', src: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&q=70' },
-    { cat: 'Kegiatan', src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=70' },
+    { cat: 'Wisuda', src: 'https://lh3.googleusercontent.com/d/1TCqHsD_YLsxilBiYdRG_0d1omDkfqKNb' },
+    { cat: 'Kegiatan', src: 'https://lh3.googleusercontent.com/d/1tydDKOMLFL1sDS2ktA0B9fatq6bmBu7S' },
   ];
 
   const masonryElement = $('#masonry');
@@ -446,7 +448,7 @@
           <button class="icon-mini" data-copy="${p.title}" aria-label="Salin link">
             <i class="fa-solid fa-link"></i>
           </button>
-          <button class="icon-mini" onclick="window.print()" aria-label="Print">
+          <button class="icon-mini" data-print="${p.url || ''}" aria-label="Print">
             <i class="fa-solid fa-print"></i>
           </button>
         </div>
@@ -466,22 +468,86 @@
       pn.appendChild(b);
     }
 
-    // Share & Copy delegated
+    // -------------------------------------------------------------
+    // LOGIKA SHARE ARTIKEL YANG AKURAT UNTUK GITHUB PAGES
+    // -------------------------------------------------------------
     $$('#blogGrid [data-share]').forEach(btn => on(btn, 'click', async () => {
       const title = btn.dataset.share;
-      // Jika artikel ada linknya, share link aslinya. Jika tidak, share link website utama.
-      const urlToShare = btn.dataset.url ? (window.location.origin + '/' + btn.dataset.url) : location.href;
+      const articleUrl = btn.dataset.url;
+
+      // Validasi: Jika artikel tidak punya file URL tersendiri
+      if (!articleUrl) {
+        toast('Halaman untuk artikel ini belum tersedia.', 'error');
+        return;
+      }
+
+      // Buat path URL yang akurat (aman untuk sub-folder GitHub Pages)
+      const urlToShare = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/') + articleUrl;
 
       if (navigator.share) {
-        try { await navigator.share({ title, url: urlToShare }); } catch { }
+        try { 
+          await navigator.share({ title, url: urlToShare }); 
+        } catch (error) {
+          // Error diabaikan jika user sengaja membatalkan (cancel) menu share bawaan HP
+          if (error.name !== 'AbortError') {
+            toast('Gagal membagikan artikel.', 'error');
+          }
+        }
       } else {
         toast('Fitur share tidak didukung browser ini', 'error');
       }
     }));
 
     $$('#blogGrid [data-copy]').forEach(btn => on(btn, 'click', () => {
-      navigator.clipboard.writeText(location.href + '#' + encodeURIComponent(btn.dataset.copy));
-      toast('Link artikel disalin!', 'success');
+      const articleUrl = btn.dataset.url;
+      
+      // Tentukan link yang akurat: jika artikel punya file HTML, arahkan ke file tersebut. Jika tidak, pakai halaman utama.
+      const accurateUrl = articleUrl 
+        ? (window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/') + articleUrl) 
+        : location.href;
+
+      navigator.clipboard.writeText(accurateUrl);
+      toast('Link artikel berhasil disalin!', 'success');
+    }));
+
+    // -------------------------------------------------------------
+    // LOGIKA CETAK ARTIKEL KHUSUS
+    // -------------------------------------------------------------
+    $$('#blogGrid [data-print]').forEach(btn => on(btn, 'click', async () => {
+      const targetUrl = btn.dataset.print;
+
+      if (!targetUrl) {
+        toast('Halaman artikel ini belum tersedia untuk dicetak.', 'error');
+        return;
+      }
+
+      toast('Menyiapkan dokumen untuk dicetak...', 'success');
+
+      // Buat iframe tersembunyi untuk memuat halaman artikel
+      let iframe = document.getElementById('printFrame');
+      if (!iframe) {
+        iframe = document.createElement('iframe');
+        iframe.id = 'printFrame';
+        iframe.style.position = 'absolute';
+        iframe.style.width = '0px';
+        iframe.style.height = '0px';
+        iframe.style.border = 'none';
+        document.body.appendChild(iframe);
+      }
+
+      // Muat file artikel ke dalam iframe
+      iframe.src = targetUrl;
+
+      // Tunggu sampai iframe selesai memuat halaman artikel
+      iframe.onload = () => {
+        try {
+          // Panggil fungsi print khusus dari dalam iframe artikel tersebut
+          iframe.contentWindow.focus();
+          iframe.contentWindow.print();
+        } catch (err) {
+          toast('Gagal mencetak artikel. Periksa izin akses file.', 'error');
+        }
+      };
     }));
 
     // -------------------------------------------------------------
@@ -503,12 +569,18 @@
           const response = await fetch(targetUrl, { method: 'HEAD' });
 
           if (response.ok) {
-            // Jika valid (status 200), arahkan ke halaman
-            window.location.href = targetUrl;
+            // Jika valid (status 200): Kembalikan tombol sebentar lalu pindah halaman
+            btn.innerHTML = originalText;
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = 'auto';
+
+            setTimeout(() => {
+              window.location.href = targetUrl;
+            }, 300); // Jeda 300ms agar perubahan teks sempat terlihat
+
           } else {
             // Jika link diisi tapi filenya tidak ditemukan (status 404, dll)
             openModal(articleTitle, 'Mohon maaf, halaman untuk artikel ini belum tersedia atau sedang dalam perbaikan.');
-            // Kembalikan tombol seperti semula
             btn.innerHTML = originalText;
             btn.style.opacity = '1';
             btn.style.pointerEvents = 'auto';

@@ -171,6 +171,10 @@
                     <div class="hero__cta">
                         <a href="#profil" class="btn btn--primary ripple">Profil Sekolah</a>
                         <a href="#ppdb" class="btn btn--ghost ripple">SPMB Online →</a>
+                        <!-- kalo udah pendaftaran btn ini dihapus -->
+                        <a class="btn btn--primary ripple" href="#" id="downloadBrosur"><i
+                                class="fa-solid fa-file-export"></i> Download Brosur</a>
+                        <!-- kalo udah pendaftaran btn ini dihapus -->
                     </div>
 
                     <div class="stats" aria-label="Statistik sekolah">
@@ -275,7 +279,7 @@
                             </div>
                         </div>
                         <div class="slide"><img loading="lazy" alt="Olahraga" class="check-offline"
-                                src="https://images.unsplash.com/photo-1607013251379-e6eecfffe234?auto=format&fit=crop&w=1400&q=70">
+                                src="https://lh3.googleusercontent.com/d/1wuGd6d2pjWiUuNptD3DCvXDsD1ptjnMo">
                             <div class="slide__cap">
                                 <h3>Ekstrakurikuler</h3>
                                 <p>Beragam pilihan bakat & minat.</p>
@@ -653,11 +657,22 @@
 
                 <div class="ppdb-grid">
                     <!-- Iframe tersembunyi untuk menangkap respons -->
-                    <!--iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
-                        onload="handleFormSubmitted()"></!--iframe>
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+                        onload="handleFormSubmitted()"></iframe>
 
+                    <!-- Tambahkan class "locked-form" di sini, jangan lupa dihapus kalo sudah buka-->
                     <form action="https://formspree.io/f/mwlkqkjp" method="POST" target="hidden_iframe"
-                        class="glass-card pad ppdb-form" id="ppdbForm">
+                        class="glass-card pad ppdb-form locked-form" id="ppdbForm">
+
+                        <!-- ELEMEN OVERLAY BARU (Hapus bagian ini kalau form sudah dibuka) -->
+                        <div class="lock-overlay">
+                            <div class="lock-content">
+                                <i class="fa-solid fa-lock"></i>
+                                <h3>Pendaftaran belum dibuka.<br>Tunggu aja ya..</h3>
+                            </div>
+                        </div>
+                        <!-- BATAS OVERLAY -->
+
                         <div class="form-row">
                             <label>Nama Lengkap*<input required name="nama" type="text"
                                     placeholder="Nama lengkap sesuai akta" /></label>
@@ -717,9 +732,7 @@
                             <a class="btn btn--ghost ripple" href="#" id="downloadBrosur"><i
                                     class="fa-solid fa-file-export"></i> Download Brosur</a>
                         </div>
-                    </form -->
-
-                    <p class="glass-card pad ppdb-form">Pendaftaran belum dibuka. Tunggu aja ya..</p>
+                    </form>
 
                     <aside class="glass-card pad ppdb-aside">
                         <h3>FAQ SPMB</h3>

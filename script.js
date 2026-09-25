@@ -320,7 +320,7 @@
     { cat: 'Lomba', src: 'https://images.unsplash.com/photo-1607988795691-3d0147b43231?auto=format&fit=crop&w=800&q=70' },
     { cat: 'Kegiatan', src: 'https://lh3.googleusercontent.com/d/1MvK9iWtnzLad2C4ttUev-QzkrrgGhebu' },
     { cat: 'Wisuda', src: 'https://lh3.googleusercontent.com/d/1rO-8Ns8UpE-49lsnZPbtcqubxHbkIaf4' },
-    { cat: 'Ekstrakurikuler', src: 'https://images.unsplash.com/photo-1511632765486-a53c4337b587?auto=format&fit=crop&w=800&q=70' },
+    { cat: 'Ekstrakurikuler', src: 'https://lh3.googleusercontent.com/d/1wuGd6d2pjWiUuNptD3DCvXDsD1ptjnMo' },
     { cat: 'Upacara', src: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=70' },
     { cat: 'Lomba', src: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&q=70' },
     { cat: 'Wisuda', src: 'https://lh3.googleusercontent.com/d/1TCqHsD_YLsxilBiYdRG_0d1omDkfqKNb' },

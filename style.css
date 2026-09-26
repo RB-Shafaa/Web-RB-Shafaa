@@ -266,10 +266,12 @@ p {
   color: var(--text);
   border: 1px solid var(--border);
   backdrop-filter: blur(16px);
+  box-shadow: 0 10px 24px rgba(108, 59, 255, 0.35);
 }
 
 .btn--ghost:hover {
   transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(255, 79, 163, 0.4);
 }
 
 .ripple {
@@ -1757,6 +1759,104 @@ p {
     color: white;
     line-height: 1.5;
     font-weight: 600;
+}
+
+/* =========================================================
+   MODAL POPUP PILIHAN BROSUR (Sesuai Gaya Shafaa CSS)
+   ========================================================= */
+.modal-brosur-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(14, 10, 31, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 300;
+  display: none; /* Default tertutup */
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+.modal-brosur-overlay.is-open {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-brosur-panel {
+  background: var(--surface-solid);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px 28px;
+  max-width: 420px;
+  width: 100%;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  animation: fadeUp .35s var(--ease);
+}
+
+.modal-brosur-panel h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.modal-brosur-panel p {
+  color: var(--text-2);
+  font-size: 0.95rem;
+  margin-bottom: 24px;
+}
+
+.modal-brosur-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.btn-jenjang {
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  font-weight: 600;
+  color: var(--text);
+  transition: all 0.25s var(--ease);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 10px 24px rgba(108, 59, 255, 0.35);
+}
+
+.btn-jenjang:hover {
+  background: var(--grad-brand);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(255, 79, 163, 0.4);
+}
+
+.modal-brosur-close {
+  width: 100%;
+  padding: 12px;
+  border-radius: 999px;
+  background: var(--grad-brand);
+  border: 1px solid var(--border);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(108, 59, 255, 0.35);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s var(--ease);
+}
+
+.modal-brosur-close:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(255, 79, 163, 0.4);
+
 }
 
 /* -------- Masonry gallery -------- */

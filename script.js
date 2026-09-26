@@ -485,8 +485,8 @@
       const urlToShare = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/') + articleUrl;
 
       if (navigator.share) {
-        try { 
-          await navigator.share({ title, url: urlToShare }); 
+        try {
+          await navigator.share({ title, url: urlToShare });
         } catch (error) {
           // Error diabaikan jika user sengaja membatalkan (cancel) menu share bawaan HP
           if (error.name !== 'AbortError') {
@@ -500,10 +500,10 @@
 
     $$('#blogGrid [data-copy]').forEach(btn => on(btn, 'click', () => {
       const articleUrl = btn.dataset.url;
-      
+
       // Tentukan link yang akurat: jika artikel punya file HTML, arahkan ke file tersebut. Jika tidak, pakai halaman utama.
-      const accurateUrl = articleUrl 
-        ? (window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/') + articleUrl) 
+      const accurateUrl = articleUrl
+        ? (window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/') + articleUrl)
         : location.href;
 
       navigator.clipboard.writeText(accurateUrl);
@@ -769,18 +769,83 @@
     toast('Pendaftaran berhasil dikirim! Data telah diterima.', 'success');
   };
 
-  on($('#downloadBrosur'), 'click', (e) => {
-    e.preventDefault();
+  // Fungsi pembantu download & cek file PDF
+  async function handleDownloadBrosur(jenjang, filename, pdfUrl) {
+    try {
+      const response = await fetch(pdfUrl, { method: 'HEAD' });
 
-    const a = document.createElement('a');
-    a.href = 'images/Brosur.pdf';
-    a.download = 'Brosur-PPDB-Shafaa.pdf';
+      if (!response.ok) {
+        toast(`Maaf, brosur ${jenjang} belum tersedia saat ini.`, 'error');
+        return;
+      }
 
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+      const a = document.createElement('a');
+      a.href = pdfUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
 
-    toast('Brosur berhasil diunduh', 'success');
+      toast(`Brosur ${jenjang} berhasil diunduh`, 'success');
+    } catch (error) {
+      toast(`Gagal mengunduh brosur ${jenjang}. File tidak ditemukan.`, 'error');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const btnDownloadMain = document.getElementById('downloadBrosur');
+    const modalBrosur = document.getElementById('modalBrosur');
+    const btnClose = document.getElementById('closeModal');
+    const btnJenjangList = document.querySelectorAll('.btn-jenjang');
+
+    // Buka modal
+    if (btnDownloadMain && modalBrosur) {
+      btnDownloadMain.addEventListener('click', (e) => {
+        e.preventDefault();
+        modalBrosur.classList.add('is-open');
+      });
+    }
+
+    // Tutup modal (Tombol Batal)
+    if (btnClose && modalBrosur) {
+      btnClose.addEventListener('click', () => {
+        modalBrosur.classList.remove('is-open');
+      });
+    }
+
+    // Tutup modal jika klik area gelap di luar panel
+    if (modalBrosur) {
+      modalBrosur.addEventListener('click', (e) => {
+        if (e.target === modalBrosur) {
+          modalBrosur.classList.remove('is-open');
+        }
+      });
+    }
+
+    // Aksi pilih jenjang
+    btnJenjangList.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const jenjang = btn.getAttribute('data-jenjang');
+
+        if (modalBrosur) modalBrosur.classList.remove('is-open');
+
+        switch (jenjang) {
+          case 'tk':
+            handleDownloadBrosur('TK', 'Brosur-TK-Shafaa.pdf', 'brosur/Brosur TK.pdf');
+            break;
+          case 'sd':
+            handleDownloadBrosur('SD', 'Brosur-SD-Shafaa.pdf', 'brosur/Brosur SD.pdf');
+            break;
+          case 'smp':
+            handleDownloadBrosur('SMP', 'Brosur-SMP-Shafaa.pdf', 'brosur/Brosur SMP.pdf');
+            break;
+          case 'sma':
+            handleDownloadBrosur('SMA', 'Brosur-SMA-Shafaa.pdf', 'brosur/Brosur SMA.pdf');
+            break;
+        }
+      });
+    });
   });
 
   /* ---------- Contact Form ---------- */

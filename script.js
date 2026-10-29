@@ -111,15 +111,26 @@
   ];
   on(searchBtn, 'click', () => { searchOv.classList.add('is-open'); setTimeout(() => searchInput.focus(), 200); });
   on(closeSearch, 'click', () => searchOv.classList.remove('is-open'));
-  on(searchInput, 'input', () => {
+  const renderSearchResults = () => {
     const q = searchInput.value.toLowerCase().trim();
     if (!q) { searchRes.innerHTML = ''; return; }
     const found = searchIndex.filter(i => (i.title + i.desc).toLowerCase().includes(q));
     searchRes.innerHTML = found.length
       ? found.map(f => `<a href="${f.href}"><b>${f.title}</b><br/><small style="color:var(--muted)">${f.desc}</small></a>`).join('')
       : '<p class="no-res">Tidak ada hasil ditemukan.</p>';
+  };
+  on(searchInput, 'input', renderSearchResults);
+  searchRes.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    searchOv.classList.remove('is-open');
   });
-  $$('#searchResults a').forEach(a => on(a, 'click', () => searchOv.classList.remove('is-open')));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') searchOv.classList.remove('is-open'); });
 
   /* ---------- Reveal on scroll ---------- */
@@ -173,18 +184,15 @@
   document.addEventListener("DOMContentLoaded", () => {
     const offlineImageSrc = 'images/Modal Gambar Tidak Tersedia.png';
 
-    // Ambil semua gambar yang memiliki kelas 'check-offline'
     const images = document.querySelectorAll('img.check-offline');
 
     images.forEach(img => {
-      // 1. Cek langsung saat halaman dimuat (jika status awal sudah offline)
       if (!navigator.onLine) {
         img.src = offlineImageSrc;
       }
 
-      // 2. Fallback otomatis jika gagal memuat (karena offline, internet putus, atau URL error)
       img.onerror = function () {
-        this.onerror = null; // Mencegah infinite loop jika gambar fallback gagal
+        this.onerror = null;
         this.src = offlineImageSrc;
       };
     });
@@ -195,12 +203,10 @@
   let idx = 0;
   const offlineImageSrc = 'images/Modal Gambar Tidak Tersedia.png';
 
-  // Fungsi untuk memuat gambar slide dengan proteksi offline & error handling
   function updateSlideImages() {
     slides.forEach(slide => {
       const img = slide.querySelector('img.check-offline');
       if (img) {
-        // Simpan sumber asli di atribut data jika belum ada
         if (!img.dataset.src && !img.src.includes('Modal Gambar Tidak Tersedia.png')) {
           img.dataset.src = img.src;
         }
@@ -211,7 +217,6 @@
           img.src = img.dataset.src;
         }
 
-        // Fallback jika gagal load saat online
         img.onerror = function () {
           this.onerror = null;
           this.src = offlineImageSrc;
@@ -233,7 +238,6 @@
     track.style.transform = `translateX(-${idx * 100}%)`;
     $$('#sliderDots button').forEach((d, di) => d.classList.toggle('is-active', di === idx));
 
-    // Periksa status gambar setiap kali slide digeser/berpindah
     updateSlideImages();
   }
 
@@ -245,7 +249,6 @@
   $('#slider')?.addEventListener('mouseenter', () => clearInterval(slideTimer));
   $('#slider')?.addEventListener('mouseleave', () => slideTimer = setInterval(() => go(idx + 1), 5000));
 
-  // Jalankan sekali saat pertama kali halaman dimuat
   updateSlideImages();
 
   /* ---------- Teachers data ---------- */
@@ -338,22 +341,20 @@
     lbIndex = i;
     lbImg.src = list[i].src;
 
-    // Pertahankan fallback error image
     lbImg.onerror = function () {
       this.onerror = null;
       this.src = 'images/Modal Gambar Tidak Tersedia.png';
     };
 
     lb.classList.add('is-open');
-    document.body.style.overflow = 'hidden'; // Kunci scroll background
+    document.body.style.overflow = 'hidden';
   }
 
   function closeLightbox() {
     lb.classList.remove('is-open');
-    document.body.style.overflow = ''; // Kembalikan scroll
+    document.body.style.overflow = '';
   }
 
-  // Event Listeners Lightbox
   on($('#lbClose'), 'click', closeLightbox);
 
   on($('#lbPrev'), 'click', () => {
@@ -392,11 +393,9 @@
         <img loading="lazy" alt="${g.cat}" src="${g.src}" onerror="this.onerror=null; this.src='images/Modal Gambar Tidak Tersedia.png';" />
     </div>`).join('');
 
-    // Hubungkan item yang dirender ke fungsi Lightbox baru
     $$('#masonry .item').forEach((it, i) => on(it, 'click', () => openLightbox(list, i)));
   }
 
-  // Inisialisasi awal
   renderGallery();
 
   /* -------- Filter System -------- */
@@ -408,13 +407,11 @@
 
   /* ---------- Blog ---------- */
   const posts = [
-    // Tambahkan properti "url: 'nama_file.html'" untuk artikel yang halamannya sudah jadi
     { title: '5 Tips Belajar Efektif untuk Siswa Digital', cat: 'Tips', date: '10 Feb 2026', img: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=70', excerpt: 'Pelajari strategi belajar yang tetap fokus di era distraksi digital.', url: 'artikel/tips_belajar_digital.html' },
     { title: 'Menanamkan Adab Sejak Dini di Sekolah', cat: 'Karakter', date: '02 Feb 2026', img: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=70', excerpt: 'Mengapa adab harus lebih dulu diajarkan dibanding ilmu.', url: 'artikel/adab_di_sekolah.html' },
     { title: 'Coding untuk Anak', cat: 'Teknologi', date: '28 Jan 2026', img: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=70', excerpt: 'Panduan orang tua memperkenalkan coding secara menyenangkan.', url: 'artikel/coding_untuk_anak.html' },
     { title: 'Manfaat Program Tahfidz Al-Qur\'an', cat: 'Religi', date: '20 Jan 2026', img: 'https://images.unsplash.com/photo-1609599006353-e629aaabfeae?auto=format&fit=crop&w=1200&q=80', excerpt: 'Dampak positif hafalan Al-Qur\'an bagi kecerdasan anak.', url: 'artikel/program_tahfidz_al_qur_an.html' },
 
-    // Untuk artikel yang belum ada halamannya, biarkan tanpa properti url atau kosongkan
     { title: 'Peran Ekstrakurikuler dalam Pembentukan Karakter', cat: 'Karakter', date: '12 Jan 2026', img: 'https://storage.googleapis.com/data.ayo.co.id/photos/77445/SEO%20HDI%204/81.%20Inilah%20Ukuran%20Standar%20Lapangan%20Mini%20Soccer%20yang%20Harus%20Diketahui.jpg', excerpt: 'Ekstrakurikuler bukan sekadar kegiatan tambahan.', url: 'artikel/peran_ekskul.html' },
     { title: 'Persiapan Ujian Nasional', cat: 'Akademik', date: '05 Jan 2026', img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=70', excerpt: 'Susun jadwal, kelola stres, dan tingkatkan performa.', url: 'artikel/persiapan_ujian.html' },
     { title: 'AI di Kelas', cat: 'Teknologi', date: '28 Des 2025', img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=800&q=70', excerpt: 'Bagaimana guru bijak memanfaatkan AI.', url: 'artikel/ai_dikelas.html' },
@@ -457,7 +454,6 @@
 
     $$('#blogGrid [data-reveal]').forEach(el => el.classList.add('is-visible'));
 
-    // Pagination
     const pages = Math.ceil(posts.length / perPage);
     pn.innerHTML = '';
     for (let i = 1; i <= pages; i++) {
@@ -475,20 +471,17 @@
       const title = btn.dataset.share;
       const articleUrl = btn.dataset.url;
 
-      // Validasi: Jika artikel tidak punya file URL tersendiri
       if (!articleUrl) {
         toast('Halaman untuk artikel ini belum tersedia.', 'error');
         return;
       }
 
-      // Buat path URL yang akurat (aman untuk sub-folder GitHub Pages)
       const urlToShare = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/') + articleUrl;
 
       if (navigator.share) {
         try {
           await navigator.share({ title, url: urlToShare });
         } catch (error) {
-          // Error diabaikan jika user sengaja membatalkan (cancel) menu share bawaan HP
           if (error.name !== 'AbortError') {
             toast('Gagal membagikan artikel.', 'error');
           }
@@ -501,7 +494,6 @@
     $$('#blogGrid [data-copy]').forEach(btn => on(btn, 'click', () => {
       const articleUrl = btn.dataset.url;
 
-      // Tentukan link yang akurat: jika artikel punya file HTML, arahkan ke file tersebut. Jika tidak, pakai halaman utama.
       const accurateUrl = articleUrl
         ? (window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '/') + articleUrl)
         : location.href;
@@ -523,7 +515,6 @@
 
       toast('Menyiapkan dokumen untuk dicetak...', 'success');
 
-      // Buat iframe tersembunyi untuk memuat halaman artikel
       let iframe = document.getElementById('printFrame');
       if (!iframe) {
         iframe = document.createElement('iframe');
@@ -535,13 +526,10 @@
         document.body.appendChild(iframe);
       }
 
-      // Muat file artikel ke dalam iframe
       iframe.src = targetUrl;
 
-      // Tunggu sampai iframe selesai memuat halaman artikel
       iframe.onload = () => {
         try {
-          // Panggil fungsi print khusus dari dalam iframe artikel tersebut
           iframe.contentWindow.focus();
           iframe.contentWindow.print();
         } catch (err) {
@@ -557,43 +545,37 @@
       const targetUrl = btn.dataset.url;
       const articleTitle = btn.dataset.title;
 
-      // Ubah teks tombol sementara agar user tahu sistem sedang mengecek
       const originalText = btn.innerHTML;
       btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Memuat...';
       btn.style.opacity = '0.7';
-      btn.style.pointerEvents = 'none'; // Cegah klik dobel
+      btn.style.pointerEvents = 'none';
 
       if (targetUrl !== '') {
         try {
-          // Cek apakah file HTML-nya benar-benar ada di server
           const response = await fetch(targetUrl, { method: 'HEAD' });
 
           if (response.ok) {
-            // Jika valid (status 200): Kembalikan tombol sebentar lalu pindah halaman
             btn.innerHTML = originalText;
             btn.style.opacity = '1';
             btn.style.pointerEvents = 'auto';
 
             setTimeout(() => {
               window.location.href = targetUrl;
-            }, 300); // Jeda 300ms agar perubahan teks sempat terlihat
+            }, 300);
 
           } else {
-            // Jika link diisi tapi filenya tidak ditemukan (status 404, dll)
             openModal(articleTitle, 'Mohon maaf, halaman untuk artikel ini belum tersedia atau sedang dalam perbaikan.');
             btn.innerHTML = originalText;
             btn.style.opacity = '1';
             btn.style.pointerEvents = 'auto';
           }
         } catch (error) {
-          // Jika terjadi error koneksi jaringan
           openModal(articleTitle, 'Gagal memuat artikel. Silakan periksa koneksi internet Anda.');
           btn.innerHTML = originalText;
           btn.style.opacity = '1';
           btn.style.pointerEvents = 'auto';
         }
       } else {
-        // Jika URL memang dibiarkan kosong
         openModal(articleTitle, 'Artikel ini akan segera tayang penuh di halaman blog Shafaa. Nantikan update terbarunya!');
         btn.innerHTML = originalText;
         btn.style.opacity = '1';
@@ -615,7 +597,6 @@
   on(modal, 'click', (e) => { if (e.target === modal) modal.classList.remove('is-open'); });
   $$('.ann-card [data-modal]').forEach(b => on(b, 'click', () => openModal(b.dataset.modal, 'Info lengkap segera diumumkan. Silakan pantau website secara berkala atau ikuti media sosial resmi Rumah Belajar Shafaa.')));
 
-  // Popup pengumuman satu kali per sesi
   setTimeout(() => {
     if (!sessionStorage.getItem('shafaa-popup')) {
       openModal('🎉 PPDB 2027/2028 Dibuka!', 'Gelombang 1 dibuka 1 Maret — 30 April 2027, Gelombang 2 dibuka 1 Mei — 30 Juni 2027. Daftar sekarang & dapatkan diskon awal + kesempatan beasiswa prestasi.');
@@ -634,69 +615,73 @@
   /* ---------- Contact Form (Metode Fetch API Handal) ---------- */
   const contactForm = $('#contactForm');
 
-  on(contactForm, 'submit', async (e) => {
-    e.preventDefault(); // Cegah reload bawaan form
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    const fields = contactForm.querySelectorAll('input, textarea');
-    let ok = true;
+      const fields = contactForm.querySelectorAll('input, textarea');
+      let ok = true;
 
-    fields.forEach(f => {
-      if (!f.checkValidity()) {
-        f.style.borderColor = '#ef4444';
-        ok = false;
-      } else {
-        f.style.borderColor = '';
-      }
-    });
-
-    if (!ok) {
-      toast('Mohon lengkapi semua kolom dengan benar', 'error');
-      return;
-    }
-
-    // Ambil tombol submit
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-
-    // Ubah tombol jadi loading
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim Pesan...';
-    toast('Mengirim pesan...', 'success');
-
-    try {
-      // Kirim data menggunakan fetch ke Formspree
-      const formData = new FormData(contactForm);
-      const response = await fetch(contactForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
+      fields.forEach((f) => {
+        if (!f.checkValidity()) {
+          f.style.borderColor = '#ef4444';
+          ok = false;
+        } else {
+          f.style.borderColor = '';
         }
       });
 
-      if (response.ok) {
-        // BERHASIL: Kosongkan form, kembalikan tombol, munculkan toast sukses
-        contactForm.reset();
-        toast('Pesan berhasil dikirim! Terima kasih atas masukan Anda.', 'success');
-      } else {
-        // Gagal dari server Formspree
-        toast('Gagal mengirim pesan. Silakan coba lagi.', 'error');
+      if (!ok) {
+        toast('Mohon lengkapi semua kolom dengan benar', 'error');
+        return;
       }
-    } catch (error) {
-      // Gagal jaringan / koneksi
-      toast('Terjadi kesalahan jaringan. Periksa koneksi Anda.', 'error');
-    } finally {
-      // Pastikan tombol selalu kembali normal (tidak stuck di loading)
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = originalText;
-    }
-  });
+
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      if (!submitBtn) return;
+      const originalText = submitBtn.innerHTML;
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim Pesan...';
+      toast('Mengirim pesan...', 'success');
+
+      try {
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          contactForm.reset();
+          toast('Pesan berhasil dikirim! Terima kasih atas masukan Anda.', 'success');
+        } else {
+          toast('Gagal mengirim pesan. Silakan coba lagi.', 'error');
+        }
+      } catch (error) {
+        toast('Terjadi kesalahan jaringan. Periksa koneksi Anda.', 'error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalText;
+      }
+    });
+  }
+
+  const hiddenFormIframe = document.getElementById('hidden_iframe');
+  if (hiddenFormIframe) {
+    hiddenFormIframe.addEventListener('load', () => {
+      if (typeof window.handleFormSubmitted === 'function') {
+        window.handleFormSubmitted();
+      }
+    });
+  }
 
   /* ---------- PPDB Form (Dengan Loading, Reset & Stepper Aktif) ---------- */
   const ppdb = $('#ppdbForm');
   let isSubmitting = false;
 
-  // Ambil elemen stepper
   const steps = $$('.stepper .step');
 
   function updateStepper(currentStep) {
@@ -709,7 +694,6 @@
     });
   }
 
-  // Inisialisasi awal stepper di tahap 1
   updateStepper(1);
 
   on(ppdb, 'submit', (e) => {
@@ -717,7 +701,6 @@
     let ok = true;
 
     fields.forEach(f => {
-      // Pengecualian field opsional
       if ((['nisn', 'asal', 'email'].includes(f.id || f.name)) && f.value.trim() === '') {
         f.style.borderColor = '';
         return;
@@ -737,7 +720,6 @@
       return;
     }
 
-    // Lolos validasi: Ubah tombol jadi animasi loading
     isSubmitting = true;
     const submitBtn = ppdb.querySelector('button[type="submit"]');
     if (submitBtn) {
@@ -749,7 +731,6 @@
     toast('Mengirim pendaftaran ke server...', 'success');
   });
 
-  // Fungsi global yang dipanggil saat iframe selesai menerima respons dari Formspree
   window.handleFormSubmitted = function () {
     if (!isSubmitting) return;
 
@@ -761,15 +742,12 @@
       submitBtn.innerHTML = submitBtn.dataset.originalText || 'Kirim Pendaftaran';
     }
 
-    // 1. Buat semua step stepper jadi aktif (menyala penuh) menandakan selesai
     updateStepper(steps.length);
 
-    // 2. Kosongkan form otomatis & Beri notifikasi sukses
     ppdb.reset();
     toast('Pendaftaran berhasil dikirim! Data telah diterima.', 'success');
   };
 
-  // Fungsi pembantu download & cek file PDF
   async function handleDownloadBrosur(jenjang, filename, pdfUrl) {
     try {
       const response = await fetch(pdfUrl, { method: 'HEAD' });
@@ -798,7 +776,6 @@
     const btnClose = document.getElementById('closeModal');
     const btnJenjangList = document.querySelectorAll('.btn-jenjang');
 
-    // Buka modal
     if (btnDownloadMain && modalBrosur) {
       btnDownloadMain.addEventListener('click', (e) => {
         e.preventDefault();
@@ -806,14 +783,12 @@
       });
     }
 
-    // Tutup modal (Tombol Batal)
     if (btnClose && modalBrosur) {
       btnClose.addEventListener('click', () => {
         modalBrosur.classList.remove('is-open');
       });
     }
 
-    // Tutup modal jika klik area gelap di luar panel
     if (modalBrosur) {
       modalBrosur.addEventListener('click', (e) => {
         if (e.target === modalBrosur) {
@@ -822,7 +797,6 @@
       });
     }
 
-    // Aksi pilih jenjang
     btnJenjangList.forEach((btn) => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
@@ -848,56 +822,53 @@
     });
   });
 
-  /* ---------- Contact Form ---------- */
-  on($('#contactForm'), 'submit', (e) => {
-    e.preventDefault();
-    const f = e.target;
-    if (!f.checkValidity()) return toast('Lengkapi semua kolom', 'error');
-    toast('Pesan terkirim! Kami akan segera membalas', 'success');
-    f.reset();
-  });
-
   /* ---------- Newsletter Form ---------- */
   const newsForm = $('#newsForm');
   let isNewsSubmitting = false;
 
-  on(newsForm, 'submit', (e) => {
-    const emailInput = newsForm.querySelector('input[type="email"]');
+  if (newsForm) {
+    newsForm.addEventListener('submit', (e) => {
+      const emailInput = newsForm.querySelector('input[type="email"]');
 
-    // Validasi email
-    if (!emailInput.checkValidity()) {
-      e.preventDefault();
-      return toast('Email tidak valid', 'error');
-    }
+      if (!emailInput || !emailInput.checkValidity()) {
+        e.preventDefault();
+        return toast('Email tidak valid', 'error');
+      }
 
-    // Lolos validasi: Aktifkan status kirim dan ubah tombol jadi loading
-    isNewsSubmitting = true;
-    const submitBtn = newsForm.querySelector('button[type="submit"]');
+      isNewsSubmitting = true;
+      const submitBtn = newsForm.querySelector('button[type="submit"]');
 
-    if (submitBtn) {
-      submitBtn.dataset.originalText = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
-    }
+      if (submitBtn) {
+        submitBtn.dataset.originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Mengirim...';
+      }
 
-    toast('Mengirim langganan...', 'success');
-  });
+      toast('Mengirim langganan...', 'success');
+    });
+  }
 
-  // Fungsi global yang dipanggil otomatis saat iframe selesai menerima respons dari Formspree
+  const hiddenNewsIframe = document.getElementById('hidden_iframe_news');
+  if (hiddenNewsIframe) {
+    hiddenNewsIframe.addEventListener('load', () => {
+      if (typeof window.handleNewsSubmitted === 'function') {
+        window.handleNewsSubmitted();
+      }
+    });
+  }
+
   window.handleNewsSubmitted = function () {
-    if (!isNewsSubmitting) return; // Mencegah eksekusi saat pertama kali halaman dimuat
+    if (!isNewsSubmitting) return;
 
     isNewsSubmitting = false;
-    const submitBtn = newsForm.querySelector('button[type="submit"]');
+    const submitBtn = newsForm ? newsForm.querySelector('button[type="submit"]') : null;
 
-    // Kembalikan tombol ke teks semula
     if (submitBtn) {
       submitBtn.disabled = false;
       submitBtn.innerHTML = submitBtn.dataset.originalText || 'Berlangganan';
     }
 
-    // Kosongkan kolom input email otomatis & beri notifikasi sukses
-    newsForm.reset();
+    if (newsForm) newsForm.reset();
     toast('Email berhasil dikirim! Terima kasih telah berlangganan.', 'success');
   };
 
@@ -911,7 +882,7 @@
     toastTimer = setTimeout(() => toastEl.classList.remove('is-show'), 3200);
   }
 
-  /* ---------- Image Error & Offline Handler ---------- (TARUH DISINI) */
+  /* ---------- Image Error & Offline Handler ---------- */
   window.handleImageError = function (imgElement) {
     imgElement.onerror = null;
 

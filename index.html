@@ -42,20 +42,20 @@
 
     <!-- Schema.org -->
     <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "Rumah Belajar Shafaa",
-    "slogan": "Sholeh, Cerdas & Intelek",
-    "url": "https://rb-shafaa.github.io/Web-RB-Shafaa",
-    "logo": "https://drive.google.com/uc?export=view&id=1B03QiOLPt6IS2A9abikEufggNzJVDxwr",
-    "sameAs": [
-      "https://instagram.com/rumahbelajarshafaa",
-      "https://facebook.com/rumahbelajarshafaa",
-      "https://youtube.com/@rumahbelajarshafaa"
-    ]
-  }
-  </script>
+    {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Rumah Belajar Shafaa",
+        "slogan": "Sholeh, Cerdas & Intelek",
+        "url": "https://rb-shafaa.github.io/Web-RB-Shafaa",
+        "logo": "https://drive.google.com/uc?export=view&id=1B03QiOLPt6IS2A9abikEufggNzJVDxwr",
+        "sameAs": [
+        "https://instagram.com/rumahbelajarshafaa",
+        "https://facebook.com/rumahbelajarshafaa",
+        "https://youtube.com/@rumahbelajarshafaa"
+        ]
+    }
+    </script>
 
     <!-- Google Fonts: Fraunces (display) + Manrope (body) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -64,7 +64,8 @@
         href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Manrope:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet" />
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -193,22 +194,22 @@
                     <div class="glass-card hero__card">
                         <img loading="lazy" class="check-offline" alt="Suasana belajar di Rumah Belajar Shafaa"
                             src="https://lh3.googleusercontent.com/d/18fTEQkn2hJ26t4lp2AD61JYgeChPB9KE" />
-                        <!--div class="hero__badge">
-              <div class="hero__badge-num">A+</div>
-              <div>
-                <div class="hero__badge-label">Akreditasi</div>
-                <div class="hero__badge-sub">Terakreditasi BAN-S/M</div>
-              </div>
-          </div-->
+                        <div class="hero__badge" style="display: none;">
+                            <div class="hero__badge-num">A+</div>
+                            <div>
+                                <div class="hero__badge-label">Akreditasi</div>
+                                <div class="hero__badge-sub">Terakreditasi BAN-S/M</div>
+                            </div>
+                        </div>
                     </div>
                     <div class="floating-tag tag--1">🎓 100% Lulus</div>
                     <div class="floating-tag tag--2">✨ Beasiswa Prestasi</div>
                 </div>
             </div>
 
-            <!--a href="#sambutan" class="hero__scroll" aria-label="Gulir ke bawah">
-        <span></span>
-    </a-->
+            <a href="#sambutan" class="hero__scroll" aria-label="Gulir ke bawah" style="display: none;">
+                <span></span>
+            </a>
         </section>
 
         <!-- ============ SAMBUTAN ============ -->
@@ -612,7 +613,7 @@
                 </div>
 
                 <div class="tab-panel" data-panel="prestasi">
-                    <!--div class="timeline">
+                    <div class="timeline" style="display: none;">
                         <div class="tl-item" data-reveal><b>2025</b>
                             <h4>Juara 1 Olimpiade Sains Nasional</h4>
                             <p>Bidang Fisika tingkat SMA.</p>
@@ -629,7 +630,7 @@
                             <h4>Juara 2 Debat Bahasa Inggris</h4>
                             <p>Tingkat Nasional.</p>
                         </div>
-                    </div-->
+                    </div>
                     <p class="glass-card pad">Masih kosong nih, nantikan update selanjutnya ya!</p>
                 </div>
             </div>
@@ -657,14 +658,13 @@
 
                 <div class="ppdb-grid">
                     <!-- Iframe tersembunyi untuk menangkap respons -->
-                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
-                        onload="handleFormSubmitted()"></iframe>
+                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
                     <!-- Tambahkan class "locked-form" di sini, jangan lupa dihapus kalo sudah buka-->
                     <form action="https://formspree.io/f/mwlkqkjp" method="POST" target="hidden_iframe"
                         class="glass-card pad ppdb-form locked-form" id="ppdbForm">
 
-                        <!-- ELEMEN OVERLAY BARU (Hapus bagian ini kalau form sudah dibuka) -->
+                        <!-- ELEMEN OVERLAY BARU (tambahin style="display: none;") -->
                         <div class="lock-overlay">
                             <div class="lock-content">
                                 <i class="fa-solid fa-lock"></i>
@@ -674,14 +674,14 @@
                         <!-- BATAS OVERLAY -->
 
                         <div class="form-row">
-                            <label>Nama Lengkap*<input required name="nama" type="text"
+                            <label>Nama Lengkap*<input required name="nama_lengkap" type="text"
                                     placeholder="Nama lengkap sesuai akta" /></label>
                             <label>NISN<input id="nisn" name="nisn" type="number" pattern="[0-9]{10}"
                                     placeholder="Masukkan NISN (Jika ada)" /></label>
                         </div>
                         <div class="form-row">
-                            <label>Tempat Lahir*<input required name="tempat" type="text" /></label>
-                            <label>Tanggal Lahir*<input required name="tanggal" type="date" /></label>
+                            <label>Tempat Lahir*<input required name="tempat_lahir" type="text" /></label>
+                            <label>Tanggal Lahir*<input required name="tanggal_lahir" type="date" /></label>
                         </div>
                         <div class="form-row">
                             <label>Jenis Kelamin*
@@ -703,23 +703,23 @@
                         </div>
                         <label>Alamat*<textarea required name="alamat" rows="2"></textarea></label>
                         <div class="form-row">
-                            <label>Asal Sekolah<input id="asal" name="asal" type="text"
+                            <label>Asal Sekolah<input id="asal" name="asal_sekolah" type="text"
                                     placeholder="Masukkan Asal Sekolah (Jika ada)" /></label>
                             <label>Nama Orang Tua*<input required name="ortu" type="text" /></label>
                         </div>
                         <div class="form-row">
-                            <label>Nomor HP*<input required name="hp" type="tel" pattern="[0-9+ ]{8,15}" /></label>
+                            <label>Nomor HP*<input required name="nomor_telepon" type="tel" pattern="[0-9+ ]{8,15}" /></label>
                             <label>Email*<input id="email" required name="email" type="email"
                                     placeholder="contoh@email.com" /></label>
                         </div>
                         <div class="form-row">
                             <label>Upload Foto*<input required name="foto" type="file" accept="image/*" /></label>
                             <label>Upload Berkas*<input required name="berkas" type="file" accept=".pdf,.zip" /></label>
-                            <label>Upload Foto Bukti Transfer*<input required name="foto_bukti" type="file"
+                            <label>Upload Foto Bukti Transfer*<input required name="foto_bukti_tf" type="file"
                                     accept="image/*" /></label>
                         </div>
                         <label class="check">
-                            <input required type="checkbox" name="sudah tf" />
+                            <input required type="checkbox" name="konfirmasi_tf" />
                             <span>Transfer biaya pendaftaran ke nomor rekening 6954229200 BSI A.N <b>Sri Rahayu
                                     Aprimarisani</b></span>
                         </label>
@@ -959,8 +959,7 @@
         </section>
 
         <!-- ============ NEWSLETTER ============ -->
-        <iframe name="hidden_iframe_news" id="hidden_iframe_news" style="display:none;"
-            onload="handleNewsSubmitted()"></iframe>
+        <iframe name="hidden_iframe_news" id="hidden_iframe_news" style="display:none;"></iframe>
 
         <section class="section" aria-label="Berlangganan newsletter">
             <div class="container">

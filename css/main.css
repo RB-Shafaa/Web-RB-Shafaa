@@ -1884,10 +1884,6 @@ p {
   font-weight: 600;
 }
 
-
-
-
-
 /* ---------- CSS Lightbox ---------- */
 .lightbox {
   position: fixed;
@@ -1963,8 +1959,6 @@ p {
 .lb-next {
   right: 20px;
 }
-
-
 
 /* -------- Blog -------- */
 .blog-grid {
@@ -2168,8 +2162,6 @@ p {
 .news-form input {
   flex: 1;
 }
-
-
 
 /* -------- Testimoni -------- */
 .test-card {

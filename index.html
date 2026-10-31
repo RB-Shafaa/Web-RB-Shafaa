@@ -65,7 +65,8 @@
         rel="stylesheet" />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
@@ -432,10 +433,10 @@
                     <h3>Sarana <span class="grad-text">Belajar</span></h3>
                 </div>
                 <div class="facilities">
-                    <!--div class="fac glass-card" data-reveal><span><i
+                    <div class="fac glass-card" data-reveal style="display: none;"><span><i
                                 class="fa-solid fa-microscope"></i></span><b>Laboratorium</b>
                         <p>IPA, Kimia, Biologi lengkap.</p>
-                    </div-->
+                    </div>
                     <div class="fac glass-card" data-reveal><span><i
                                 class="fa-solid fa-book-bookmark"></i></span><b>Perpustakaan</b>
                         <p>1.000+ koleksi buku.</p>
@@ -455,7 +456,7 @@
                     <div class="fac glass-card" data-reveal><span><i class="fa-solid fa-heartbeat"></i></span><b>UKS</b>
                         <p>Layanan kesehatan siswa.</p>
                     </div>
-                    <div class="fac glass-card" data-reveal><span><i class="fa-solid fa-utensils"></i></span><b>Makanan
+                    <div class="fac glass-card" data-reveal style="display: none;"><span><i class="fa-solid fa-utensils"></i></span><b>Makanan
                             Bergizi</b>
                         <p>Menu sehat & higienis.</p>
                     </div>
@@ -657,15 +658,12 @@
                 </ol>
 
                 <div class="ppdb-grid">
-                    <!-- Iframe tersembunyi untuk menangkap respons -->
-                    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
                     <!-- Tambahkan class "locked-form" di sini, jangan lupa dihapus kalo sudah buka-->
-                    <form action="https://formspree.io/f/mwlkqkjp" method="POST" target="hidden_iframe"
-                        class="glass-card pad ppdb-form locked-form" id="ppdbForm">
+                    <form class="glass-card pad ppdb-form" id="ppdbForm">
 
                         <!-- ELEMEN OVERLAY BARU (tambahin style="display: none;") -->
-                        <div class="lock-overlay">
+                        <div class="lock-overlay" style="display: none;">
                             <div class="lock-content">
                                 <i class="fa-solid fa-lock"></i>
                                 <h3>Pendaftaran belum dibuka.<br>Tunggu aja ya..</h3>
@@ -939,8 +937,7 @@
                         </div>
                     </div>
 
-                    <form action="https://formspree.io/f/mnpndqay" method="POST" target="hidden_iframe_contact"
-                        class="glass-card pad contact-form" id="contactForm" novalidate data-reveal>
+                    <form class="glass-card pad contact-form" id="contactForm" novalidate data-reveal>
                         <label>Nama<input required name="cname" type="text" /></label>
                         <label>Email<input required name="cemail" type="email" placeholder="contoh@email.com" /></label>
                         <label>Pesan<textarea required name="cmsg" rows="5"
@@ -959,8 +956,6 @@
         </section>
 
         <!-- ============ NEWSLETTER ============ -->
-        <iframe name="hidden_iframe_news" id="hidden_iframe_news" style="display:none;"></iframe>
-
         <section class="section" aria-label="Berlangganan newsletter">
             <div class="container">
                 <div class="newsletter glass-card">
@@ -969,8 +964,7 @@
                         <h3>Dapatkan info & artikel terbaru</h3>
                         <p>Kirim langsung ke email kamu, tanpa spam.</p>
                     </div>
-                    <form action="https://formspree.io/f/mkjgrnwq" method="POST" target="hidden_iframe_news"
-                        id="newsForm" class="news-form">
+                    <form id="newsForm" class="news-form">
                         <input required type="email" name="email" placeholder="Alamat contoh@email.com kamu"
                             aria-label="Email" />
                         <button class="btn btn--primary ripple" type="submit">Berlangganan</button>
@@ -1066,7 +1060,14 @@
     <!-- Toast -->
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <script src="script.js"></script>
+    <!-- Supabase JS Client (UMD Build untuk Vanilla JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Konfigurasi Supabase -->
+    <script src="js/content.js"></script>
+
+    <!-- Main Script -->
+    <script src="js/main.js"></script>
 </body>
 
 </html>

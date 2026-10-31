@@ -48,6 +48,9 @@
 
   function onScroll() {
     const y = window.scrollY;
+    const mobileMenu = $('#nav');
+    const searchPanel = $('#searchOverlay');
+
     navbar.classList.toggle('is-scrolled', y > 20);
 
     const h = document.documentElement.scrollHeight - window.innerHeight;
@@ -63,14 +66,20 @@
     // Back to top
     $('#toTop').classList.toggle('is-visible', y > 500);
 
+    const shouldKeepNavbarVisible = (mobileMenu && mobileMenu.classList.contains('is-open')) ||
+      (searchPanel && searchPanel.classList.contains('is-open'));
+
     // Auto Hide/Show Navbar on Scroll
-    if (y <= scrollThreshold) {
+    if (y <= scrollThreshold || shouldKeepNavbarVisible) {
       navbar.classList.remove('is-hidden');
+      document.body.classList.remove('nav-hidden');
     } else {
       if (y > lastScrollTop) {
         navbar.classList.add('is-hidden');
+        document.body.classList.add('nav-hidden');
       } else {
         navbar.classList.remove('is-hidden');
+        document.body.classList.remove('nav-hidden');
       }
     }
 
@@ -88,19 +97,44 @@
     document.body.style.overflow = lock ? 'hidden' : '';
     document.documentElement.style.overflow = lock ? 'hidden' : '';
   }
-  
-  on(hamburger, 'click', () => {
-    const open = nav.classList.toggle('is-open');
-    hamburger.classList.toggle('is-open', open);
-    hamburger.setAttribute('aria-expanded', open);
-    lockBodyScroll(open);
+
+  function closeMobileMenu() {
+    nav.classList.remove('is-open');
+    hamburger.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    lockBodyScroll(false);
+  }
+
+  function toggleMobileMenu() {
+    const isOpen = nav.classList.toggle('is-open');
+    hamburger.classList.toggle('is-open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    lockBodyScroll(isOpen);
+  }
+
+  on(hamburger, 'click', (event) => {
+    event.stopPropagation();
+    toggleMobileMenu();
   });
 
   navLinks.forEach(a => on(a, 'click', () => {
-    nav.classList.remove('is-open');
-    hamburger.classList.remove('is-open');
-    lockBodyScroll(false);
+    closeMobileMenu();
   }));
+
+  document.addEventListener('click', (event) => {
+    const clickedInsideNav = nav.contains(event.target);
+    const clickedOnHamburger = hamburger.contains(event.target);
+
+    if (nav.classList.contains('is-open') && !clickedInsideNav && !clickedOnHamburger) {
+      closeMobileMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && nav.classList.contains('is-open')) {
+      closeMobileMenu();
+    }
+  });
 
   /* ---------- Search ---------- */
   const searchBtn = $('#searchBtn');

@@ -8,8 +8,8 @@
   'use strict';
 
   /* ---------- Helpers ---------- */
-  const $ = (sel, ctx = document) => ctx.querySelector(sel);
-  const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+  const $ = (sel, ctx = document) => ctx ? ctx.querySelector(sel) : null;
+  const $$ = (sel, ctx = document) => ctx ? Array.from(ctx.querySelectorAll(sel)) : [];
   const on = (el, ev, fn) => el && el.addEventListener(ev, fn);
 
   /* ---------- Loader ---------- */
@@ -41,7 +41,15 @@
   const navbar = $('#navbar');
   const progress = $('#scrollProgress');
   const navLinks = $$('.nav__link');
-  const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  navLinks.forEach(a => {
+    a.classList.remove('is-active');
+    const href = a.getAttribute('href');
+    if (href === currentPath || (currentPath === 'index.html' && href === '#home')) {
+      a.classList.add('is-active');
+    }
+  });
 
   let lastScrollTop = 0;
   const scrollThreshold = 50;
@@ -55,13 +63,6 @@
 
     const h = document.documentElement.scrollHeight - window.innerHeight;
     progress.style.width = ((y / h) * 100).toFixed(2) + '%';
-
-    // Active link
-    let current = sections[0]?.id;
-    for (const s of sections) {
-      if (s.offsetTop - 120 <= y) current = s.id;
-    }
-    navLinks.forEach(a => a.classList.toggle('is-active', a.getAttribute('href') === '#' + current));
 
     // Back to top
     $('#toTop').classList.toggle('is-visible', y > 500);
@@ -143,14 +144,14 @@
   const searchRes = $('#searchResults');
   const closeSearch = $('#closeSearch');
   const searchIndex = [
-    { title: 'Home', href: '#home', desc: 'Beranda Rumah Belajar Shafaa' },
-    { title: 'Sambutan Kepala Sekolah', href: '#sambutan', desc: 'Salam & pengantar dari Kepala Sekolah' },
-    { title: 'Profil Sekolah', href: '#profil', desc: 'Sejarah, visi, misi, guru, fasilitas' },
-    { title: 'Kurikulum & Akademik', href: '#akademik', desc: 'Kurikulum, jadwal, kalender, prestasi' },
-    { title: 'SPMB Online', href: '#ppdb', desc: 'Pendaftaran siswa baru' },
-    { title: 'Galeri', href: '#galeri', desc: 'Momen kegiatan Shafaa' },
-    { title: 'Blog', href: '#blog', desc: 'Artikel & insight pendidikan' },
-    { title: 'Kontak', href: '#kontak', desc: 'Alamat, telepon, email, sosial media' },
+    { title: 'Home', href: 'index.html#home', desc: 'Beranda Rumah Belajar Shafaa' },
+    { title: 'Sambutan Kepala Sekolah', href: 'index.html#sambutan', desc: 'Salam & pengantar dari Kepala Sekolah' },
+    { title: 'Profil Sekolah', href: 'profil.html#profil', desc: 'Sejarah, visi, misi, guru, fasilitas' },
+    { title: 'Kurikulum & Akademik', href: 'akademik.html#akademik', desc: 'Kurikulum, jadwal, kalender, prestasi' },
+    { title: 'SPMB Online', href: 'spmb.html#ppdb', desc: 'Pendaftaran siswa baru' },
+    { title: 'Galeri', href: 'galeri.html#galeri', desc: 'Momen kegiatan Shafaa' },
+    { title: 'Blog', href: 'blog.html#blog', desc: 'Artikel & insight pendidikan' },
+    { title: 'Kontak', href: 'kontak.html#kontak', desc: 'Alamat, telepon, email, sosial media' },
   ];
   on(searchBtn, 'click', () => { searchOv.classList.add('is-open'); setTimeout(() => searchInput.focus(), 200); });
   on(closeSearch, 'click', () => searchOv.classList.remove('is-open'));
@@ -167,10 +168,15 @@
     const link = e.target.closest('a');
     if (!link) return;
     const href = link.getAttribute('href');
-    if (href && href.startsWith('#')) {
-      e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    
+    if (href.includes('.html#')) {
+      const [page, hash] = href.split('#');
+      const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    if (page === currentPath) {
+        e.preventDefault();
+        const target = document.getElementById(hash);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
     searchOv.classList.remove('is-open');
   });
@@ -241,7 +247,8 @@
     });
   });
   /* ---------- Slider ---------- */
-  const track = $('#sliderTrack'); const slides = $$('.slide', track);
+  const track = $('#sliderTrack'); 
+  const slides = track ? $$('.slide', track) : [];
   const dotsWrap = $('#sliderDots');
   let idx = 0;
   const offlineImageSrc = 'images/Modal Gambar Tidak Tersedia.png';
@@ -277,6 +284,7 @@
   });
 
   function go(i) {
+    if (!track) return;
     idx = (i + slides.length) % slides.length;
     track.style.transform = `translateX(-${idx * 100}%)`;
     $$('#sliderDots button').forEach((d, di) => d.classList.toggle('is-active', di === idx));
@@ -287,10 +295,11 @@
   on($('#prevSlide'), 'click', () => go(idx - 1));
   on($('#nextSlide'), 'click', () => go(idx + 1));
 
-  let slideTimer = setInterval(() => go(idx + 1), 5000);
-
-  $('#slider')?.addEventListener('mouseenter', () => clearInterval(slideTimer));
-  $('#slider')?.addEventListener('mouseleave', () => slideTimer = setInterval(() => go(idx + 1), 5000));
+  if (track) {
+    let slideTimer = setInterval(() => go(idx + 1), 5000);
+    $('#slider')?.addEventListener('mouseenter', () => clearInterval(slideTimer));
+    $('#slider')?.addEventListener('mouseleave', () => slideTimer = setInterval(() => go(idx + 1), 5000));
+  }
 
   updateSlideImages();
 
@@ -419,6 +428,7 @@
 
   /* -------- Gallery Render Functions -------- */
   function renderGallery(cat = 'all') {
+    if (!masonryElement) return;
     const list = galleryImages.filter(g => cat === 'all' || g.cat === cat);
 
     if (list.length === 0) {
@@ -463,6 +473,7 @@
   const bg = $('#blogGrid'), pn = $('#pagination');
 
   function renderBlog() {
+    if (!bg || !pn) return;
     const start = (page - 1) * perPage;
     const list = posts.slice(start, start + perPage);
 
@@ -990,9 +1001,14 @@
   /* ---------- Smooth scroll for hash links ---------- */
   $$('a[href^="#"]').forEach(a => on(a, 'click', (e) => {
     const id = a.getAttribute('href');
-    if (id.length > 1 && document.querySelector(id)) {
-      e.preventDefault();
-      document.querySelector(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (id.length > 1) {
+      try {
+        const target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      } catch (err) {}
     }
   }));
 

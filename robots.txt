@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rb-shafaa.github.io/Web-RB-Shafaa/sitemap.xml

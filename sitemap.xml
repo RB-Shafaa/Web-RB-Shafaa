@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Halaman Utama -->
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/</loc>
+    <priority>1.00</priority>
+  </url>
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/index.html</loc>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- Halaman Profil -->
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/profil.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Halaman Akademik -->
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/akademik.html</loc>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Halaman SPMB (Prioritas tinggi karena penting untuk konversi/pendaftaran) -->
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/spmb.html</loc>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Halaman Galeri -->
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/galeri.html</loc>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- Halaman Kontak -->
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/kontak.html</loc>
+    <priority>0.70</priority>
+  </url>
+
+  <!-- ======================== -->
+  <!--       ARTIKEL BLOG       -->
+  <!-- ======================== -->
+  
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/artikel/tips_belajar_digital.html</loc>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/artikel/adab_di_sekolah.html</loc>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/artikel/coding_untuk_anak.html</loc>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/artikel/program_tahfidz_al_qur_an.html</loc>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/artikel/peran_ekskul.html</loc>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/artikel/persiapan_ujian.html</loc>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/artikel/ai_dikelas.html</loc>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/artikel/menumbuhkan_minat_baca.html</loc>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://rb-shafaa.github.io/Web-RB-Shafaa/artikel/publik_speaking.html</loc>
+    <priority>0.60</priority>
+  </url>
+
+</urlset>
